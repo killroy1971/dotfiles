@@ -1,0 +1,88 @@
+# conky configuration
+background no
+use_xft yes
+xftfont Bitstream Vera Sans Mono:size=12
+xftalpha 0.8
+# Force UTF8? note that UTF8 support required XFT
+override_utf8_locale yes
+
+update_interval 1.0
+total_run_times 0
+
+own_window no
+double_buffer yes
+minimum_size 900 0
+maximum_width 400
+draw_shades yes
+draw_outline no
+draw_borders no
+draw_graph_borders yes
+stippled_borders 8
+border_margin 4
+border_width 1
+own_window		yes
+own_window_transparent	no
+own_window_type		override
+own_window_hints	undecorated,below,sticky,skip_taskbar,skip_pager
+alignment top_right
+gap_x 12
+gap_y 48
+no_buffers yes
+uppercase no
+
+# number of cpu samples to average
+# set to 1 to disable averaging
+cpu_avg_samples 2
+
+# number of net samples to average
+# set to 1 to disable averaging
+net_avg_samples 2
+
+# Add spaces to keep things from moving about?  This only affects certain objects.
+use_spacer right
+
+# Default colors and default border colors
+default_color white
+default_shade_color black
+default_outline_color white
+
+# colors
+color0 orange      # Text
+color1 blue     # Status bars
+color3 white       # Sub-text
+
+text_buffer_size 2048
+
+# stuff after 'TEXT' will be formatted on screen
+TEXT
+${color0}$alignc ${time %H:%M.%S} / ${utime %R} (Z)
+$alignc ${time %a, %d %b %Y}
+${color0}${hr 2}
+${color3}$alignc $sysname $kernel on $machine
+$alignc Uptime: $uptime
+
+${color3}Processor ${hr 2}
+${color0}${tab 20}AMD Athlon 3000+ 64Bit ${freq_g cpu0}Ghz
+${color0}${tab 20}CPU Load: ${cpu cpu0}% ${color1}${cpubar cpu0 6}
+        
+${color3}Memory ${hr 2}
+${color0}${tab 20}Ram:  ${mem} / ${memmax} 
+${color0}${tab 30}Used: ${color3}${memperc}%${alignr}${color1}${membar 6, 150}
+${color0}${tab 20}Swap:  ${swap} / ${swapmax}
+${color0}${tab 30}Used:  ${color3}${swapperc}%${alignr}${color1}${swapbar 6, 150}
+
+${color3}Top Memory Processes: ${hr 2}
+${color3}${tab 20}Process: $alignr PID   MEM%
+${color0}${tab 40}${top_mem name 1}$alignr${top_mem pid 1} ${top_mem mem 1}
+${color0}${tab 40}${top_mem name 2}$alignr${top_mem pid 2} ${top_mem mem 2}
+${color0}${tab 40}${top_mem name 3}$alignr${top_mem pid 3} ${top_mem mem 3}
+${color0}${tab 40}${top_mem name 4}$alignr${top_mem pid 4} ${top_mem mem 4}
+${color0}${tab 40}${top_mem name 5}$alignr${top_mem pid 5} ${top_mem mem 5}
+${color0}${tab 40}${top_mem name 6}$alignr${top_mem pid 6} ${top_mem mem 6}
+
+${color3}Free Partition Space ${hr 2}${color0}
+/ $alignc ${fs_used /} / ${fs_size /} $alignr Free: ${fs_free_perc /}%
+${color1}${fs_bar /}
+${color0}/home $alignc ${fs_used /home} / ${fs_size /home} $alignr Free: ${fs_free_perc /home}%
+${color1}${fs_bar /home}
+

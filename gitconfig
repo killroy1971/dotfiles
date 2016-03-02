@@ -1,0 +1,11 @@
+[user]
+	name = glenn
+	email = glennsnead@gmail.com
+[core]
+	editor = vim
+[merge]
+	tool = vimdiff
+[push]
+	default = matching
+[hub]
+protocol = https
