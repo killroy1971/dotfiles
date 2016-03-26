@@ -47,34 +47,36 @@ export LANG GREP_OPTOINS GREP_COLOR EDITOR
 # the use of passwords and passphrases during interactive and
 # non-interactive OpenSSH logins.
 case "$OSTYPE" in
-darwin)
-   # Check configuration for the "Fink" environment
-   if [ -x /sw/bin/keychain ]; then
-     keychain --dir ~/.ssh
-     source ~/.keychain/${HOSTNAME}-sh
+darwin*)
+  # Check configuration for the "Fink" environment
+  if [ -x /usr/local/bin/keychain ]; then
+   keychain -q ~/.ssh/id_rsa
+   source ~/.keychain/${HOSTNAME}-sh
+   else
+     if [ -n "$SSH_AGENT_PID" ]; then eval `ssh-agent -s`; fi
+     ssh-add -l | grep "The agent has no identities" > /dev/null 
+     if [ $? == 0 ]; then ssh-add; fi
    fi
-   ;;
+;;
 cygwin)
-   if [ -x /usr/bin/keychain ]; then
-     if [ -O ~/.ssh/id_rsa ]; then
-       keychain -q ~/.ssh/id_rsa
-       source ~/.keychain/${HOSTNAME}-sh
-     fi
-   fi
-   ;;
-#*)
-#   if [ -O ~/.ssh/id_rsa ]; then
-#     if [ -x /usr/bin/keychain ]; then
-#       keychain -q ~/.ssh/id_rsa
-#       source ~/.keychain/${HOSTNAME}-sh
-#     else
-#       ssh-add -l > /dev/null
-#       if [ $? == 2 ]; then eval `ssh-agent -s`; fi
-#       ssh-add -l > /dev/null
-#       if [ $? == 1 ]; then ssh-add; fi
-#     fi
-#   fi
-#   ;;
+  if [ -x /usr/bin/keychain ]; then
+   keychain -q ~/.ssh/id_rsa
+   source ~/.keychain/${HOSTNAME}-sh
+   else
+     if [ -n "$SSH_AGENT_PID" ]; then eval `ssh-agent -s`; fi
+     ssh-add -l | grep "The agent has no identities" > /dev/null 
+     if [ $? == 0 ]; then ssh-add; fi
+  fi
+;;
+*)
+  if [ -x /usr/bin/keychain ]; then
+   keychain -q ~/.ssh/id_rsa
+   source ~/.keychain/${HOSTNAME}-sh
+  else
+     if [ -n "$SSH_AGENT_PID" ]; then eval `ssh-agent -s`; fi
+     ssh-add -l | grep "The agent has no identities" > /dev/null 
+     if [ $? == 0 ]; then ssh-add; fi
+  fi
+;;
 esac
-
 

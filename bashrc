@@ -101,6 +101,9 @@ fi
  alias grep='grep --color'                     # show differences in colour
  alias igrep='grep --color -i'                 # show differences in colour and ignore case
 
+# Use vim if available
+if [ -x /usr/bin/vim ]; then alias vi='/usr/bin/vim'; fi
+
 # ##################
 # Welcome Screen
 # ##################
