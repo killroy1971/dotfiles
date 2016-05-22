@@ -44,13 +44,24 @@ darwin??)
   PS1='\[\033[01;32m\][$CurDir]\n\[\033[01;32m\]\u@\h $\[\033[0m\] '
 # Set Aliases
     export CLICOLOR=1
-	export LSCOLORS=GxFxCxDxBxegedabagaced
+ 	  export LSCOLORS=GxFxCxDxBxegedabagaced
     alias ls='ls -G -F -h'
     alias ll='ls -l -G -F -h'
     alias la='ls -A -G -F -h'
     alias lla='ls -l -A -G -F -h'
     alias dir='ls -G -x -h'
     alias vdir='ls -G -l -h'
+;;
+cygwin)
+# Set Prompt 
+  PROMPT_COMMAND='CurDir=`pwd|sed -e "s!$HOME!~!"|sed -re "s!([^/])[^/]+/!\1/!g"`'
+  PS1='\[\033[01;32m\][$CurDir]\n\[\033[01;32m\]\u@\h $\[\033[0m\] '
+  # PS1='[$CurDir]\n\u@\h: $: '
+# Set Aliases
+    alias ls='ls --color=auto -F -h'
+    alias ll='ls -l -h'                              # long list
+    alias la='ls -A -h'                              # all but . and ..
+    alias lla='ls -lA -h'                            # long list of all but . and ..
 ;;
 *)
 # Set Prompt 
@@ -68,9 +79,7 @@ darwin??)
 ;;
 esac
 #  Fix the 'no clear command' in cygwin.
-if [ $OSTYPE = "cygwin" ]; then
-    alias clear='cmd /c cls'
-fi
+#if [ $OSTYPE = "cygwin" ]; then alias clear='cmd /c cls'; fi
 
 # ##################
 # Completion options
@@ -89,13 +98,13 @@ fi
 # ##################
 
 # Make destructive commands safer with verification
- alias rm='rm -i'
- alias cp='cp -i'
- alias mv='mv -i'
+ alias rm='/bin/rm -i'
+ alias cp='/bin/cp -i'
+ alias mv='/bin/mv -i'
 
 # Use human readable figures
- alias df='df -h'
- alias du='du -h'
+ alias df='/bin/df -h'
+ alias du='/bin/du -h'
 
 # Add some color to grep
  alias grep='grep --color'                     # show differences in colour

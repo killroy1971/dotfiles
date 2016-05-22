@@ -53,27 +53,36 @@ darwin*)
    keychain -q ~/.ssh/id_rsa
    source ~/.keychain/${HOSTNAME}-sh
    else
-     if [ -n "$SSH_AGENT_PID" ]; then eval `ssh-agent -s`; fi
+     if ! [ -n "$SSH_AGENT_PID" ]; then eval `ssh-agent -s`; fi
      ssh-add -l | grep "The agent has no identities" > /dev/null 
      if [ $? == 0 ]; then ssh-add; fi
    fi
 ;;
 cygwin)
-  if [ -x /usr/bin/keychain ]; then
-   keychain -q ~/.ssh/id_rsa
-   source ~/.keychain/${HOSTNAME}-sh
+  if [ -x /bin/keychain ]; then
+   keychain -Q -q ~/.ssh/id_rsa
+   source "${HOME}/.keychain/${HOSTNAME}-sh"
    else
-     if [ -n "$SSH_AGENT_PID" ]; then eval `ssh-agent -s`; fi
+     if ! [ -n "$SSH_AGENT_PID" ]; then eval `ssh-agent -s`; fi
      ssh-add -l | grep "The agent has no identities" > /dev/null 
      if [ $? == 0 ]; then ssh-add; fi
   fi
+  if [ -d "/drives/c/Program Files/Oracle/VirtualBox"/ ]; then
+    PATH="/drives/c/Program Files/Oracle/VirtualBox/":${PATH}
+  fi
+  if [ -d "/drives/c/HashiCorp/Vagrant/bin/" ]; then
+    EMBEDDEDDIR="/drives/c/HashiCorp/Vagrant/embedded/"
+    PATH="/drives/c/HashiCorp/Vagrant/bin/":${PATH}
+    PATH=${PATH}:${EMBEDDEDDIR}/bin:${EMBEDDEDDIR}/gnuwin32/bin
+  fi
+  export PATH
 ;;
 *)
   if [ -x /usr/bin/keychain ]; then
    keychain -q ~/.ssh/id_rsa
    source ~/.keychain/${HOSTNAME}-sh
   else
-     if [ -n "$SSH_AGENT_PID" ]; then eval `ssh-agent -s`; fi
+     if ! [ -n "$SSH_AGENT_PID" ]; then eval `ssh-agent -s`; fi
      ssh-add -l | grep "The agent has no identities" > /dev/null 
      if [ $? == 0 ]; then ssh-add; fi
   fi
