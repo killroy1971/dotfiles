@@ -104,7 +104,7 @@ esac
 
 # Use human readable figures
  alias df='/bin/df -h'
- alias du='/bin/du -h'
+ if [ -x /usr/bin/du ]; then alias du='/usr/bin/du -h'; else alias du='/bin/du -h'; fi
 
 # Add some color to grep
  alias grep='grep --color'                     # show differences in colour
@@ -112,6 +112,9 @@ esac
 
 # Use vim if available
 if [ -x /usr/bin/vim ]; then alias vi='/usr/bin/vim'; fi
+
+# Alais MacVim if installed (homebrew)
+if [ -x $HOME/Applications/MacVim.app ]; then alias gvim='open -a $HOME/Applications/MacVim.app'; fi
 
 # ##################
 # Welcome Screen
