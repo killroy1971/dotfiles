@@ -13,7 +13,13 @@
 "set noguipty
 
 " Set the font
-  set guifont=Monaco:h16
+if has("gui_gtk2")
+  set guifont=Monospace\ 14
+elseif has("macunix")
+  set guifont=Monaco:h14 
+elseif has("win95","win64")
+  set gufont=Courier_New:h14:cANSI:qDRAFT
+endif
 
 win 80 25 		" Window size
 set ch=2		" Make command line two lines high
