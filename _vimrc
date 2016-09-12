@@ -45,7 +45,7 @@ set hlsearch       "Highlight search matches
 set backup
 " Trap for Windows machines: Use user's local "Temp" directory in
 " AppData/Local
-if has('win32') || has('win64')
+if has('win32') || has('win64') || has('win32unix')
    set backupdir=$USERPROFILE/AppData/Local/Temp
    set backupskip=$USERPROFILE/AppData/Local/Temp
    set directory=$USERPROFILE/AppData/Local/Temp
