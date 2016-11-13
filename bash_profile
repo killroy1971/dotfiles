@@ -4,6 +4,9 @@
 # the default umask is set in /etc/profile
 #umask 022
 
+# Set up initial path statment:
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:.
+
 # source the system wide bashrc if it exists
 if [ -e /etc/bash.bashrc ]; then 
   source /etc/bash.bashrc
@@ -22,10 +25,6 @@ fi
  
 # Set INFOPATH so it includes users' private info if it exists
  test -d "${HOME}/info" && INFOPATH=${HOME}/info:${INFOPATH}
-
-# Set the path for Fink (OS-X) if it exists
-test -r /sw/bin/init.sh && . /sw/bin/init.sh
-test -d /sw/lib/pkgconfig && export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/sw/lib/pkgconfig
 
 # Export all of these environment varriables
 export MANPATH INFOPATH PATH
@@ -48,7 +47,6 @@ export LANG GREP_OPTOINS GREP_COLOR EDITOR
 # non-interactive OpenSSH logins.
 case "$OSTYPE" in
 darwin*)
-  # Check configuration for the "Fink" environment
   if [ -x /usr/local/bin/keychain ]; then
    keychain -q ~/.ssh/id_rsa
    source ~/.keychain/${HOSTNAME}-sh
