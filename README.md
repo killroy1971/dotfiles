@@ -13,6 +13,7 @@ This mainly covers: bash, git, and vim.
 * vim directory: Containing my preferred vim plugins.
 * gitconfig: Containing my perferred git configuration.
 * gitignore
+* ssh_config: Use this as a personal ".ssh/config" file.
 * Xdefaults: Because you never know when you'll need this file.
 * conkyrc: I created this back in the day when I was using conky.
 * zshrc: for the Z-Shell, which I'm learning to use.  
