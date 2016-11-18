@@ -17,6 +17,9 @@ fi
 # source the users bashrc if it exists
   test -e "${HOME}/.bashrc" && source "${HOME}/.bashrc"
 
+# Add the /opt/bin path if this system is using opkg (i.e. QNAP NAS)
+  test -e "/opt/bin/opkg" && PATH=/opt/bin:${PATH}
+
 # Set PATH so it includes user's private bin if it exists
   test -d "${HOME}/bin" && PATH=${HOME}/bin:${PATH}
 
