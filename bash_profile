@@ -14,6 +14,9 @@ elif [ -e /etc/bashrc ]; then
   source /etc/bashrc
 fi
   
+# Add the /opt/bin path if this system is using opkg (i.e. QNAP NAS)
+  test -e "/opt/bin/opkg" && PATH=/opt/bin:${PATH}
+
 # source the users bashrc if it exists
   test -e "${HOME}/.bashrc" && source "${HOME}/.bashrc"
 
@@ -50,20 +53,12 @@ darwin*)
   if [ -x /usr/local/bin/keychain ]; then
    keychain -q ~/.ssh/id_rsa
    source ~/.keychain/${HOSTNAME}-sh
-   else
-     if ! [ -n "$SSH_AGENT_PID" ]; then eval `ssh-agent -s`; fi
-     ssh-add -l | grep "The agent has no identities" > /dev/null 
-     if [ $? == 0 ]; then ssh-add; fi
-   fi
+  fi
 ;;
 cygwin)
   if [ -x /bin/keychain ]; then
    keychain -Q -q ~/.ssh/id_rsa
    source "${HOME}/.keychain/${HOSTNAME}-sh"
-   else
-     if ! [ -n "$SSH_AGENT_PID" ]; then eval `ssh-agent -s`; fi
-     ssh-add -l | grep "The agent has no identities" > /dev/null 
-     if [ $? == 0 ]; then ssh-add; fi
   fi
   if [ -d "/drives/c/Program Files/Oracle/VirtualBox"/ ]; then
     PATH="/drives/c/Program Files/Oracle/VirtualBox/":${PATH}
@@ -79,10 +74,6 @@ cygwin)
   if [ -x /usr/bin/keychain ]; then
    keychain -q ~/.ssh/id_rsa
    source ~/.keychain/${HOSTNAME}-sh
-  else
-     if ! [ -n "$SSH_AGENT_PID" ]; then eval `ssh-agent -s`; fi
-     ssh-add -l | grep "The agent has no identities" > /dev/null 
-     if [ $? == 0 ]; then ssh-add; fi
   fi
 ;;
 esac
