@@ -75,6 +75,7 @@ cygwin)
    keychain -q ~/.ssh/id_rsa
    source ~/.keychain/${HOSTNAME}-sh
   fi
+  if [ -f /etc/fedora-release ]; then export VAGRANT_DEFAULT_PROVIDER=virtualbox; fi
 ;;
 esac
 

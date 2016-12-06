@@ -12,7 +12,7 @@ This mainly covers: bash, git, and vim.
 * gvimrc
 * vim directory: Containing my preferred vim plugins.
 * gitconfig: Containing my perferred git configuration.
-* gitignore
+* gitignore: Keep things out of git that shouldn't be there.
 * ssh_config: Use this as a personal ".ssh/config" file.
 * Xdefaults: Because you never know when you'll need this file.
 * conkyrc: I created this back in the day when I was using conky.
@@ -20,5 +20,4 @@ This mainly covers: bash, git, and vim.
   This file came from the babun Windows package, and requires the use of "Oh-My-Zsh!"
 * movein.sh: My attempt at a universal shell set up script.  
   I recommend backing up your configurations and customizing this script first!
-
 
