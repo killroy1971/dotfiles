@@ -114,7 +114,7 @@ esac
 if [ -x /usr/bin/vim ]; then alias vi='/usr/bin/vim'; fi
 
 # Alais MacVim if installed (homebrew)
-if [ -x $HOME/Applications/MacVim.app ]; then alias gvim='open -a $HOME/Applications/MacVim.app'; fi
+if [ -x '/usr/local/bin/mvim' ]; then alias gvim='/usr/local/bin/mvim'; fi
 
 # ##################
 # Welcome Screen
