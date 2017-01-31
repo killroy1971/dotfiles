@@ -12,6 +12,11 @@
 # Shell options
 # ##################
 
+#Fix an issue with Ubuntu/Debian where terminal type is 'xterm'
+if [ -f /usr/share/vim/vim74/debian.vim ]; then
+    if [ ${TERM} == "xterm" ]; then export TERM=xterm-256color; fi
+fi
+
 # Correct small typos in directory paths
  shopt -s cdspell
 

@@ -3,6 +3,13 @@
 # Glenn H. Snead
 # 26 Jun 2016
 
+# For Windows GVIM:
+# Install Git for Windows and use the minitty terminal
+# Once you have downloaded the dotfiles repository,
+# Create symbolic links to _vimrc, then
+# %USREPROFILE%/vimfiles instead of ".vim"
+
+
 if [ -d ${HOME}/.vim ]; then /bin/rm -Rf ${HOME}/.vim; fi
 if [ -f ${HOME}/.vimrc ]; then /bin/rm -f ${HOME}/.vimrc; fi
 if [ -f ${HOME}/.gvimrc ]; then /bin/rm -f ${HOME}/.gvimrc; fi
