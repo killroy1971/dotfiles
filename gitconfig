@@ -9,8 +9,6 @@
 	filemode = false
 [color]
 	ui = true
-[credential]
-	helper = cache --timeout=3600
 [merge]
 	tool = vimdiff
 [push]

@@ -3,3 +3,23 @@ Host github.com
   Hostname github.com
   IdentityFile ~/.ssh/id_rsa
 
+Host oselab-imp
+  Hostname oselab-699a.oslab.opentlc.com
+  User glenn.snead-clearbridgetech.com
+  IdentityFile ~/.ssh/id_rsa
+
+Host oselab-fast
+  Hostname oselab-0e50.oslab.opentlc.com
+  User glenn.snead-clearbridgetech.com
+  IdentityFile ~/.ssh/id_rsa
+
+Host jenkins
+  User ec2-user
+  Hostname ec2-52-200-51-238.compute-1.amazonaws.com
+  IdentityFile ~/.ssh/gsprime.pem
+
+Host slab
+  Hostname master.workshop.openshift.opentlc.com
+  User glenn.snead-clearbridgetech.com
+  IdentityFile ~/.ssh/id_rsa
+

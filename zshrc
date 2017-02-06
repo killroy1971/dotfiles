@@ -83,3 +83,8 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias gvim='mintty vim &'
+
+# Add AWS CLI Z-Shell completion in OSX if the awscli file is available
+if [[ -f /usr/local/share/zsh/site-functions/_aws ]]; then
+  source /usr/local/share/zsh/site-functions/_aws
+fi
