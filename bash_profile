@@ -29,15 +29,6 @@ fi
 # Set INFOPATH so it includes users' private info if it exists
  test -d "${HOME}/info" && INFOPATH=${HOME}/info:${INFOPATH}
 
-# Set up Homebrew on OSX
- if [ ${OSTYPE} == '^darwin' ]; then 
-   HOMEBREW_GITHUB_API_TOKEN="e231ba049d556e98b8a0b60fea62377ca5967435"
-   HOMEBREW_CASK_OPTS=--caskroom=/opt/homebrew-cask/Caskroom
-   export HOMEBREW_GITHUB_API_TOKEN HOMEBREW_CASK_OPTS
- fi
-
-
-
 # Export all of these environment varriables
 export MANPATH INFOPATH PATH
  
