@@ -74,13 +74,14 @@ cygwin)
   PS1='\[\033[01;32m\][$CurDir]\n\[\033[01;32m\]\u@\h $\[\033[0m\] '
   # PS1='[$CurDir]\n\u@\h: $: '
 # Set Aliases
-    eval "`dircolors -b`"
+    eval `dircolors -b`
     alias ls='ls --color=auto -F -h'
     alias dir='ls --color=auto --format=vertical -h'
     alias vdir='ls --color=auto --format=long -h'
     alias ll='ls -l -h'                              # long list
     alias la='ls -A -h'                              # all but . and ..
     alias lla='ls -lA -h'                            # long list of all but . and ..
+    if [ -x ${HOME}/oc-clsuter-wrapper/oc-cluster ]; then alias='${HOME}/oc-cluster-wrapper/oc-cluaster'; fi
 ;;
 esac
 #  Fix the 'no clear command' in cygwin.
