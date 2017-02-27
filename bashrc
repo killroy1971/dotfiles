@@ -81,7 +81,7 @@ cygwin)
     alias ll='ls -l -h'                              # long list
     alias la='ls -A -h'                              # all but . and ..
     alias lla='ls -lA -h'                            # long list of all but . and ..
-    if [ -x ${HOME}/oc-clsuter-wrapper/oc-cluster ]; then alias='${HOME}/oc-cluster-wrapper/oc-cluaster'; fi
+    if [ -x "${HOME}/oc-cluster-wrapper/oc-cluster" ]; then alias oc-cluster='${HOME}/oc-cluster-wrapper/oc-cluster'; fi
 ;;
 esac
 #  Fix the 'no clear command' in cygwin.
@@ -95,9 +95,8 @@ esac
 
 # If this shell is interactive, turn on programmable completion enhancements.
 # Any completions you add in ~/.bash_completion are sourced last.
- case $- in
-   *i*) [[ -f /etc/bash_completion ]] && . /etc/bash_completion ;;
- esac
+[ -f /etc/bash_completion ] && . /etc/bash_completion
+[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 
 # ##################
 # Universal Aliases

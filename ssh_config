@@ -8,3 +8,6 @@ Host bastion
   Hostname ec2-34-199-162-232.compute-1.amazonaws.com
   IdentityFile ~/Dropbox/AWS_Keys/gsprime.pem
 
+Host *.compute-1.amazonaws.com
+  IdentityFile ~/Dropbox/AWS_Keys/gsprime.pem
+
