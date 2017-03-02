@@ -1,0 +1,24 @@
+Host github.com
+  User Killroy1971
+  Hostname github.com
+  IdentityFile ~/.ssh/id_rsa
+
+Host bastion
+  User ec2-user
+  Hostname ec2-34-199-162-232.compute-1.amazonaws.com
+  IdentityFile ~/.ssh/gsprime.pem
+
+Host *.compute-1.amazonaws.com
+  IdentityFile ~/Dropbox/AWS_Keys/gsprime.pem
+
+Host di2e-bastion
+  User glenn.snead
+  Hostname bastion-docp.di2e.net
+  IdentityFile ~/.ssh/redhat.pem
+  ForwardAgent = yes
+
+Host fedora-local
+  User glenn
+  Hostname 10.12.128.201
+  IdentityFile ~/.ssh/id_rsa
+
