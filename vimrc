@@ -40,10 +40,15 @@ set hlsearch       "Highlight search matches
 
 
 " --Vim File Backup--
-if has("win32") || has("win64") || has("win32unix")
-  set backupdir=$USERPROFILE/AppData/Local/Temp
-  set backupskip=$USERPROFILE/AppData/Local/Temp
-  set directory=$USERPROFILE/AppDAta/Local/Temp
+if has("win32") || has("win64") 
+  set backupdir=%USERPROFILE%\\AppData\\Local\\Temp
+  set backupskip=%USERPROFILE%\\AppData\\Local\\Temp
+  set directory=%USERPROFILE%\\AppDAta\\Local\\Temp
+endif
+if has("win32unix")
+  set backupdir=$USERPROFILE\\AppData\\Local\\Temp
+  set backupskip=$USERPROFILE\\AppData\\Local\\Temp
+  set directory=$USERPROFILE\\AppDAta\\Local\\Temp
 else
   set backup
   set backupdir=/tmp

@@ -83,8 +83,19 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias gvim='mintty vim &'
+alias ls='/bin/ls -F'
+alias ll='/bin/ls -Flh'
+alias la='/bin/ls -Fa'
+alias df='/bin/df -h'
 
 # Add AWS CLI Z-Shell completion in OSX if the awscli file is available
 if [[ -f /usr/local/share/zsh/site-functions/_aws ]]; then
   source /usr/local/share/zsh/site-functions/_aws
 fi
+
+#if [[ ${CYGWIN_VERSION} == "x86" ]] && [[ -f /opt/ansible/hacking/env-setup ]]; then
+#  source /opt/ansible/hacking/env-setup
+#  export ANSIBLE_LIBRARY=$ANSIBLE_HOME/library
+#  export ANSIBLE_SSH_ARGS="-o ControlMaster=no"
+#fi
+
