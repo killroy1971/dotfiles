@@ -11,3 +11,7 @@ Host bastion
 Host *.compute-1.amazonaws.com
   IdentityFile ~/Dropbox/AWS_Keys/gsprime.pem
 
+Host bastion-docp.di2e.net
+  User glenn.snead
+  IdentityFile ~/.ssh/id_rsa
+
