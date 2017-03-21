@@ -51,6 +51,7 @@ Session.vim
 .netrwhist
 *~
 .*~
+.~*
 
 # Vagrant files
 ######################

@@ -12,6 +12,11 @@
 # Shell options
 # ##################
 
+#Fix an issue with Ubuntu/Debian where terminal type is 'xterm'
+if [ -f /usr/share/vim/vim74/debian.vim ]; then
+    if [ ${TERM} == "xterm" ]; then export TERM=xterm-256color; fi
+fi
+
 # Correct small typos in directory paths
  shopt -s cdspell
 
@@ -69,13 +74,14 @@ cygwin)
   PS1='\[\033[01;32m\][$CurDir]\n\[\033[01;32m\]\u@\h $\[\033[0m\] '
   # PS1='[$CurDir]\n\u@\h: $: '
 # Set Aliases
-    eval "`dircolors -b`"
+    eval `dircolors -b`
     alias ls='ls --color=auto -F -h'
     alias dir='ls --color=auto --format=vertical -h'
     alias vdir='ls --color=auto --format=long -h'
     alias ll='ls -l -h'                              # long list
     alias la='ls -A -h'                              # all but . and ..
     alias lla='ls -lA -h'                            # long list of all but . and ..
+    if [ -x "${HOME}/oc-cluster-wrapper/oc-cluster" ]; then alias oc-cluster='${HOME}/oc-cluster-wrapper/oc-cluster'; fi
 ;;
 esac
 #  Fix the 'no clear command' in cygwin.
@@ -89,9 +95,8 @@ esac
 
 # If this shell is interactive, turn on programmable completion enhancements.
 # Any completions you add in ~/.bash_completion are sourced last.
- case $- in
-   *i*) [[ -f /etc/bash_completion ]] && . /etc/bash_completion ;;
- esac
+[ -f /etc/bash_completion ] && . /etc/bash_completion
+[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 
 # ##################
 # Universal Aliases
@@ -114,7 +119,7 @@ esac
 if [ -x /usr/bin/vim ]; then alias vi='/usr/bin/vim'; fi
 
 # Alais MacVim if installed (homebrew)
-if [ -x $HOME/Applications/MacVim.app ]; then alias gvim='open -a $HOME/Applications/MacVim.app'; fi
+if [ -x '/usr/local/bin/mvim' ]; then alias gvim='/usr/local/bin/mvim'; fi
 
 # ##################
 # Welcome Screen
