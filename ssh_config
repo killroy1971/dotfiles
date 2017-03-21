@@ -3,3 +3,5 @@ Host github.com
   Hostname github.com
   IdentityFile ~/.ssh/id_rsa
 
+Host openstack-1
+  HostName 192.168.4.16

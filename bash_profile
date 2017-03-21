@@ -56,7 +56,7 @@ darwin*)
   fi
 ;;
 cygwin)
-  if [ -x /bin/keychain ]; then
+  if [ -x /bin/keychain ] || [ -x /usr/bin/keychain ]; then
    keychain -Q -q ~/.ssh/id_rsa
    source "${HOME}/.keychain/${HOSTNAME}-sh"
   fi
