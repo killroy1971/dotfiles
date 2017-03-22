@@ -22,3 +22,9 @@ Host fedora-local
   Hostname 10.12.128.201
   IdentityFile ~/.ssh/id_rsa
 
+Host ocp-single
+  User ec2-user
+  Hostname ec2-52-23-110-162.compute-1.amazonaws.com
+  IdentityFile ~/.ssh/gsprime.pem
+
+

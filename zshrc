@@ -87,6 +87,7 @@ alias ls='/bin/ls -F'
 alias ll='/bin/ls -Flh'
 alias la='/bin/ls -Fa'
 alias df='/bin/df -h'
+alias rm='/bin/rm -i'
 
 # Add AWS CLI Z-Shell completion in OSX if the awscli file is available
 if [[ -f /usr/local/share/zsh/site-functions/_aws ]]; then
@@ -98,4 +99,12 @@ fi
 #  export ANSIBLE_LIBRARY=$ANSIBLE_HOME/library
 #  export ANSIBLE_SSH_ARGS="-o ControlMaster=no"
 #fi
+
+# Load SSH Key if on Work machine
+ 
+if [ ${HOSTNAME} = "MACEDT-BASEF-05" ]; then
+  ssh-add -l > /dev/null
+  if [ $? = 2 ]; then eval `ssh-agent -s`; fi
+  ssh-add ~/.ssh/id_rsa; fi
+fi
 
