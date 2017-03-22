@@ -3,6 +3,9 @@ Host github.com
   Hostname github.com
   IdentityFile ~/.ssh/id_rsa
 
+Host openstack-1
+  HostName 192.168.4.16
+
 Host bastion
   User ec2-user
   Hostname ec2-34-199-162-232.compute-1.amazonaws.com
@@ -21,10 +24,3 @@ Host fedora-local
   User glenn
   Hostname 10.12.128.201
   IdentityFile ~/.ssh/id_rsa
-
-Host ocp-single
-  User ec2-user
-  Hostname ec2-52-23-110-162.compute-1.amazonaws.com
-  IdentityFile ~/.ssh/gsprime.pem
-
-
