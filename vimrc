@@ -44,16 +44,22 @@ if has("win32") || has("win64")
   set backupdir=%USERPROFILE%\\AppData\\Local\\Temp
   set backupskip=%USERPROFILE%\\AppData\\Local\\Temp
   set directory=%USERPROFILE%\\AppDAta\\Local\\Temp
+  set undodir=%USERPROFILE%\\AppDAta\\Local\\Temp
 endif
 if has("win32unix")
   set backupdir=$USERPROFILE\\AppData\\Local\\Temp
   set backupskip=$USERPROFILE\\AppData\\Local\\Temp
   set directory=$USERPROFILE\\AppDAta\\Local\\Temp
+  set undodir=$USERPROFILE\\AppDAta\\Local\\Temp
 else
-  set backup
-  set backupdir=/tmp
+  if isdirectory($HOME . '/.vim-backup' ) == 0
+    :silent !mkdir -p '~/.vim-backup' > /dev/null 2>&1
+  endif
+  set backupdir=~/.vim-backup/
   set backupskip=/tmp/*,/private/tmp/*
-  set directory=/tmp
+  set directory=~/.vim-backup/
+  set undodir=~/.vim-backup/
+  set backup
 endif
 set writebackup
 
