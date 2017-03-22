@@ -52,6 +52,7 @@ Session.vim
 *~
 .*~
 .~*
+.*.un~
 
 # Vagrant files
 ######################
@@ -228,3 +229,5 @@ dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
 
+# Ansible retry files
+*.retry

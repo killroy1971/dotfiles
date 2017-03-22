@@ -18,7 +18,7 @@ if [ -f /usr/share/vim/vim74/debian.vim ]; then
 fi
 
 # Correct small typos in directory paths
- shopt -s cdspell
+shopt -s cdspell
 
 # Set vi-like behavior for bash
 set -o vi
