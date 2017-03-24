@@ -1,12 +1,14 @@
-" My vimrc file.
+" My _vimrc file. For Windows VIM
 "
 " Glenn H. Snead
-" Last change: 02 Oct 2015
+" Last change: 24 Mar 2017
 "
 " Notes: 
 " To use it, copy it to
-" for *nix, OSX, and Cygwin:  ~/.vimrc
-"           for Windows:  $VIM\_vimrc
+" %USERPROFILE%/
+" You'll want to copy your vimfiles to %USERPROFILE%/vimfiles
+" or create a link using an admin command prompt and this command
+" junction "%USERPROFILE%/<vimfiles-source-path>" "%USRPROFILE%/vimfiles"
 
 set nocompatible
 
@@ -28,6 +30,10 @@ set expandtab      "Change tabs to spaces (tabs aren't always good).
 set smarttab       "Enable smarttab funciton
 "set spl=en spell   "Spell check -- english dictionary
 
+" VIM for Windows Options
+set guifont=Lucida_Console:h12:cDEFAULT
+
+
 " --UI Config--
 set number                "Show line numbers.  :set nonumber to turn off
 set showcmd               "Show last vim command in bottom right of screen
@@ -45,15 +51,10 @@ set hlsearch       "Highlight search matches
 set backup
 " Trap for Windows machines: Use user's local "Temp" directory in
 " AppData/Local
-if has('win32') || has('win64') || has('win32unix')
-   set backupdir=$USERPROFILE/AppData/Local/Temp
-   set backupskip=$USERPROFILE/AppData/Local/Temp
-   set directory=$USERPROFILE/AppData/Local/Temp
- else
-   set backupdir=/tmp
-   set backupskip=/tmp/*,/private/tmp/*
-   set directory=/tmp
-endif
+set backupdir=%USERPROFILE%\\AppData\\Local\\Temp
+set backupskip=%USERPROFILE%\\AppData\\Local\\Temp
+set directory=%USERPROFILE%\\AppData\\Local\\Temp
+set undodir=%USERPROFILE%\\AppData\\Local\\Temp
 set writebackup
 
 " --Functions--
