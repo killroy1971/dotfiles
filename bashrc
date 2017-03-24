@@ -121,12 +121,11 @@ if [ -x /usr/bin/vim ]; then alias vi='/usr/bin/vim'; fi
 # Alais MacVim if installed (homebrew)
 if [ -x '/usr/local/bin/mvim' ]; then alias gvim='/usr/local/bin/mvim'; fi
 
-# Load SSH Key if on Work machine
-
-if [ ${HOSTNAME} == "MACEDT-BASEF-05" ]; then
-  ssh-add -l > /dev/null
+# Load redhat.pem into ssh-agent if hostname=fedora.localdomain
+if [ ${HOSTNAME} == "fedora.localdomain" ] && [ -f ~/.ssh/redhat.pem ]; then 
+  `ssh-add -l` > /dev/null
   if [ $? == 2 ]; then eval `ssh-agent -s`; fi
-  if [ -f .ssh/redhat.pem ]; then ssh-add .ssh/redhat.pem; fi
+  ssh-add .ssh/redhat.pem
 fi
 
 # ##################

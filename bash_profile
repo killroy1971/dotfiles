@@ -74,6 +74,9 @@ cygwin)
   if [ -x /usr/bin/keychain ]; then
    keychain -q ~/.ssh/id_rsa
    source ~/.keychain/${HOSTNAME}-sh
+ else
+   ssh-add -l > /dev/null
+   if [ $? == 2 ]; then eval `ssh-agent -s`; fi
   fi
   if [ -f /etc/fedora-release ]; then export VAGRANT_DEFAULT_PROVIDER=virtualbox; fi
 ;;

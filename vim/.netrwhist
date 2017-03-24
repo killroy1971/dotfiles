@@ -1,7 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/home/git/CentOS'
-let g:netrw_dirhist_2='/home/glenn/.oh-my-zsh/custom/plugins'
-let g:netrw_dirhist_3='/home/glenn/.oh-my-zsh/custom'
-let g:netrw_dirhist_4='/cygdrive/c/Users/glenn/Dropbox/Projects/homedns'
-let g:netrw_dirhist_5='/home/glenn.snead/.ssh'
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/home/glenn/ansible_openshift/roles/deploy_satellite/meta'
+let g:netrw_dirhist_2='/home/glenn/ansible_openshift/roles/aws_provisioner/meta'
+let g:netrw_dirhist_3='/home/glenn/ansible_openshift/roles/deploy_satellite/tasks'
