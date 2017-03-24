@@ -32,6 +32,7 @@ set smarttab       "Enable smarttab funciton
 
 " VIM for Windows Options
 set guifont=Lucida_Console:h12:cDEFAULT
+set lines=50 columns=120
 
 
 " --UI Config--
