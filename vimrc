@@ -53,7 +53,7 @@ if has("win32unix")
   set undodir=$USERPROFILE\\AppDAta\\Local\\Temp
 else
   if isdirectory($HOME . '/.vim-backup' ) == 0
-    :silent !mkdir -p '$HOME/.vim-backup' > /dev/null 2>&1
+    :silent !mkdir -p $HOME/.vim-backup > /dev/null 2>&1
   endif
   set backupdir=~/.vim-backup/
   set backupskip=/tmp/*,/private/tmp/*
