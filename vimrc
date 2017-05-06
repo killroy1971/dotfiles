@@ -1,7 +1,7 @@
 " My vimrc file.
 "
 " Glenn H. Snead
-" Last change: 02 Oct 2015
+" Last change: 24 Mar 2017
 "
 " Notes: 
 " To use it, copy it to
@@ -45,12 +45,11 @@ if has("win32") || has("win64")
   set backupskip=%USERPROFILE%\\AppData\\Local\\Temp
   set directory=%USERPROFILE%\\AppDAta\\Local\\Temp
   set undodir=%USERPROFILE%\\AppDAta\\Local\\Temp
-endif
-if has("win32unix")
-  set backupdir=$USERPROFILE\\AppData\\Local\\Temp
-  set backupskip=$USERPROFILE\\AppData\\Local\\Temp
-  set directory=$USERPROFILE\\AppDAta\\Local\\Temp
-  set undodir=$USERPROFILE\\AppDAta\\Local\\Temp
+elseif has("win32unix")
+  set backupdir=$USERPROFILE/AppData/Local/Temp
+  set backupskip=$USERPROFILE/AppData/Local/Temp
+  set directory=$USERPROFILE/AppDAta/Local/Temp
+  set undodir=$USERPROFILE/AppDAta/Local/Temp
 else
   if isdirectory($HOME . '/.vim-backup' ) == 0
     :silent !mkdir -p $HOME/.vim-backup > /dev/null 2>&1

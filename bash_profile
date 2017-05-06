@@ -24,10 +24,10 @@ fi
  test -d "${HOME}/bin" && PATH=${HOME}/bin:${PATH}
 
 # Set MANPATH so it includes users' private man if it exists
- test -d "${HOME}/man" && MANPATH=${HOME}/man:${MANPATH}
+  test -d "${HOME}/man" && MANPATH=${HOME}/man:${MANPATH}
  
 # Set INFOPATH so it includes users' private info if it exists
- test -d "${HOME}/info" && INFOPATH=${HOME}/info:${INFOPATH}
+  test -d "${HOME}/info" && INFOPATH=${HOME}/info:${INFOPATH}
 
 # Add oc-cluster-wrapper to PATH if it exists
  test -d "${HOME}/oc-cluster-wrapper" && PATH=${PATH}:${HOME}/oc-cluster-wrapper:
@@ -81,10 +81,12 @@ cygwin)
    keychain -q ~/.ssh/id_rsa
    source ~/.keychain/${HOSTNAME}-sh
  else
-   ssh-add -l 2> /dev/null
-   if [ $? == 2 ]; then eval `ssh-agent -s`; fi
-   ssh-add -l 2> /dev/null
-   if [ $? == 1 ]; then ssh-add ~/.ssh/id_rsa; fi
+   if [ -f ~/.ssh/id_rsa ]; then
+     ssh-add -l 2> /dev/null
+     if [ $? == 2 ]; then eval `ssh-agent -s`; fi
+     ssh-add -l 2> /dev/null
+     if [ $? == 1 ]; then ssh-add ~/.ssh/id_rsa; fi
+   fi
   fi
 ;;
 esac

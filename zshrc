@@ -34,7 +34,7 @@ alias rm='/bin/rm -i'
 alias cp='/bin/cp -i'
 alias mv='/bin/mv -i'
 
-if [ -x /usr/bin/vim ]; then alias vi='/usr/ibn/vim'; fi
+if [ -x /usr/bin/vim ]; then alias vi='/usr/bin/vim'; fi
 if [ -x /usr/local/bin/mvim ]; then alias gvim='/usr/local/bin/mvim'; fi
 
 # Add AWS CLI Z-Shell completion in OSX if the awscli file is available
