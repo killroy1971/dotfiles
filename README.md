@@ -5,7 +5,9 @@ My shell configuration files
 This mainly covers: bash, git, and vim.
 
 * bashrc
-* bash_profile
+* bash_profile - Loads your SSH key
+* bash_profile_server - Does not load an SSH key, 
+  which is anoying on server you only need to use once in a while.
 * profile
 * vimrc
 * _vimrc: For Windows-based gvim users.
@@ -21,3 +23,7 @@ This mainly covers: bash, git, and vim.
 * movein.sh: My attempt at a universal shell set up script.  
   I recommend backing up your configurations and customizing this script first!
 
+This repository is designed to work with a content manager like ansible.
+If a variable, say "is_server" is true, then make a symbolinc link
+to dotfiles/bash_profile_server.  If not, make a symbolic link to 
+dotfiles/bash_profile.
