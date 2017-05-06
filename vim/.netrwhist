@@ -1,5 +1,4 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
-let g:netrw_dirhist_1='/home/glenn/ansible_openshift/roles/deploy_satellite/meta'
-let g:netrw_dirhist_2='/home/glenn/ansible_openshift/roles/aws_provisioner/meta'
-let g:netrw_dirhist_3='/home/glenn/ansible_openshift/roles/deploy_satellite/tasks'
+let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_1='/home/glenn/Dropbox/ansible/openstack/roles/allinone'
+let g:netrw_dirhist_2='/home/glenn/Dropbox/ansible/openstack/roles'

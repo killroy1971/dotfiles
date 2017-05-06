@@ -32,18 +32,19 @@ fi
 # Add oc-cluster-wrapper to PATH if it exists
  test -d "${HOME}/oc-cluster-wrapper" && PATH=${PATH}:${HOME}/oc-cluster-wrapper:
 
-# Fedora machines
-  if [ -f /etc/fedora-release ]; then export VAGRANT_DEFAULT_PROVIDER=virtualbox; fi
+# Setup for fedora machines
+ if [ -f /etc/fedora-release ]; then export VAGRANT_DEFAULT_PROVIDER=virtualbox; fi
 
-# Add items to path if on a Windows machine
-  if [ -d "/drives/c/Program Files/Oracle/VirtualBox"/ ]; then
-    PATH="/drives/c/Program Files/Oracle/VirtualBox/":${PATH}
-  fi
-  if [ -d "/drives/c/HashiCorp/Vagrant/bin/" ]; then
-    EMBEDDEDDIR="/drives/c/HashiCorp/Vagrant/embedded/"
-    PATH="/drives/c/HashiCorp/Vagrant/bin/":${PATH}
-    PATH=${PATH}:${EMBEDDEDDIR}/bin:${EMBEDDEDDIR}/gnuwin32/bin
-  fi
+# Items for Windows Cgywin machines
+ if [ -d "/drives/c/Program Files/Oracle/VirtualBox"/ ]; then
+   PATH="/drives/c/Program Files/Oracle/VirtualBox/":${PATH}
+ fi
+ if [ -d "/drives/c/HashiCorp/Vagrant/bin/" ]; then
+   EMBEDDEDDIR="/drives/c/HashiCorp/Vagrant/embedded/"
+   PATH="/drives/c/HashiCorp/Vagrant/bin/":${PATH}
+   PATH=${PATH}:${EMBEDDEDDIR}/bin:${EMBEDDEDDIR}/gnuwin32/bin
+ fi
+
 # Export all of these environment varriables
 export MANPATH INFOPATH PATH
  
@@ -58,34 +59,4 @@ GREP_OPTIONS='--color=auto'
 GREP_COLOR='1;32'
 EDITOR='/usr/bin/vim'
 export LANG GREP_OPTIONS GREP_COLOR EDITOR
-
-# Do things that are specific to the installed OS and
-# Activate SSH-Agent via Keychain (if installed) to eliminate
-# the use of passwords and passphrases during interactive and
-# non-interactive OpenSSH logins.
-case "$OSTYPE" in
-darwin*)
-  if [ -x /usr/local/bin/keychain ]; then
-   keychain -q ~/.ssh/id_rsa
-   source ~/.keychain/${HOSTNAME}-sh
-  fi
-;;
-cygwin)
-  if [ -x /bin/keychain ] || [ -x /usr/bin/keychain ]; then
-   keychain -Q -q ~/.ssh/id_rsa
-   source "${HOME}/.keychain/${HOSTNAME}-sh"
-  fi
-;;
-*)
-  if [ -x /usr/bin/keychain ]; then
-   keychain -q ~/.ssh/id_rsa
-   source ~/.keychain/${HOSTNAME}-sh
- else
-   ssh-add -l 2> /dev/null
-   if [ $? == 2 ]; then eval `ssh-agent -s`; fi
-   ssh-add -l 2> /dev/null
-   if [ $? == 1 ]; then ssh-add ~/.ssh/id_rsa; fi
-  fi
-;;
-esac
 
