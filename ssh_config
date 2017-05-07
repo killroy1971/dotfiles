@@ -3,8 +3,14 @@ Host github.com
   Hostname github.com
   IdentityFile ~/.ssh/id_rsa
 
-Host openstack-1
-  HostName 192.168.4.16
+Host ovirt
+  User glenn
+  Hostname ovirt.gshome.lan
+  IdentityFile ~/.ssh/id_rsa
+
+Host *.gshome.lan
+  User glenn
+  IdentityFile ~/.ssh/id_rsa
 
 Host bastion
   User ec2-user

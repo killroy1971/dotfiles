@@ -1,3 +1,4 @@
+#!/bin/bash
 # Glenn's cross-platform .bashrc file
 # This .bashrc file will work in a linux, OSX, or a cygwin bash shell.
 
@@ -84,19 +85,6 @@ cygwin)
     if [ -x "${HOME}/oc-cluster-wrapper/oc-cluster" ]; then alias oc-cluster='${HOME}/oc-cluster-wrapper/oc-cluster'; fi
 ;;
 esac
-#  Fix the 'no clear command' in cygwin.
-#if [ $OSTYPE = "cygwin" ]; then alias clear='cmd /c cls'; fi
-
-# ##################
-# Completion options
-# ##################
-
-# These completion tuning parameters change the default behavior of bash_completion:
-
-# If this shell is interactive, turn on programmable completion enhancements.
-# Any completions you add in ~/.bash_completion are sourced last.
-[ -f /etc/bash_completion ] && . /etc/bash_completion
-[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 
 # ##################
 # Universal Aliases
@@ -112,17 +100,14 @@ esac
  if [ -x /usr/bin/du ]; then alias du='/usr/bin/du -h'; else alias du='/bin/du -h'; fi
 
 # Add some color to grep
- alias grep='grep --color'                     # show differences in colour
- alias igrep='grep --color -i'                 # show differences in colour and ignore case
+# alias grep='grep --color'                     # show differences in colour
+# alias igrep='grep --color -i'                 # show differences in colour and ignore case
 
 # Use vim if available
 if [ -x /usr/bin/vim ]; then alias vi='/usr/bin/vim'; fi
 
 # Alais MacVim if installed (homebrew)
 if [ -x '/usr/local/bin/mvim' ]; then alias gvim='/usr/local/bin/mvim'; fi
-
-# Load redhat.pem into ssh-agent 
-if [ -f ~/.ssh/redhat.pem ]; then ssh-add .ssh/redhat.pem; fi
 
 # ##################
 # Welcome Screen
