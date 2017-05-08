@@ -100,8 +100,8 @@ esac
  if [ -x /usr/bin/du ]; then alias du='/usr/bin/du -h'; else alias du='/bin/du -h'; fi
 
 # Add some color to grep
-# alias grep='grep --color'                     # show differences in colour
-# alias igrep='grep --color -i'                 # show differences in colour and ignore case
+ alias grep='grep --color'                     # show differences in colour
+ alias igrep='grep --color -i'                 # show differences in colour and ignore case
 
 # Use vim if available
 if [ -x /usr/bin/vim ]; then alias vi='/usr/bin/vim'; fi

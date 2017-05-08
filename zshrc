@@ -32,6 +32,10 @@ alias rm='/bin/rm -i'
 alias cp='/bin/cp -i'
 alias mv='/bin/mv -i'
 
+# Add color to grep
+alias grep='grep --color'
+alias igrep='grep --color -i'
+
 if [ -x /usr/bin/vim ]; then alias vi='/usr/bin/vim'; fi
 if [ -x /usr/local/bin/mvim ]; then alias gvim='/usr/local/bin/mvim'; fi
 
