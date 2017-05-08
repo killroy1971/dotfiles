@@ -37,10 +37,8 @@ shopt -s cdspell # spell check command line
 complete -ef sudo # enable tab complete for sudo
 set -o noclobber # protect overwriting files with cat
 set -o ignoreeof
-GREP_OPTIONS='--color=auto'
-GREP_COLOR='1;32'
 EDITOR='/usr/bin/vim'
-export LANG GREP_OPTOINS GREP_COLOR EDITOR
+export LANG EDITOR
 
 # Do things that are specific to the installed OS and
 # Activate SSH-Agent via Keychain (if installed) to eliminate

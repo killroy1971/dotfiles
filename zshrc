@@ -16,8 +16,6 @@ if [ -d $HOME/bin ]; then export PATH=$HOME/bin:$PATH; fi
 source $ZSH/oh-my-zsh.sh
 
 export LANG=en_US.UTF-8
-export GREP_OPTIONS='--color=auto'
-export GREP_COLOR='1;32'
 
 if [ -x /usr/bin/vim ]; then
   export EDITOR='vim'
