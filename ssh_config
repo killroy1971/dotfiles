@@ -39,3 +39,7 @@ Host fedora-local
   Hostname 10.12.128.201
   IdentityFile ~/.ssh/id_rsa
 
+Host ocp-proxy
+  Hostname prxy1-docp-gw1a.aws-openshift.di2e.net
+  User glenn.snead
+
