@@ -1,13 +1,15 @@
-#Glenn's dotfiles
+Glenn's dotfiles
+================
 
 My shell configuration files
 
-This mainly covers: bash, git, and vim.
+This covers: bash, git, and vim
+--------------------------------
 
 * bashrc
 * bash_profile - Loads your SSH key
-* bash_profile_server - Does not load an SSH key, 
-  which is anoying on server you only need to use once in a while.
+* bash_profile_server - Does not load your SSH key 
+  Why? Entering my SSH passphrase unnecessaryily get old fast.
 * profile
 * vimrc
 * _vimrc: For Windows-based gvim users.
@@ -15,15 +17,28 @@ This mainly covers: bash, git, and vim.
 * vim directory: Containing my preferred vim plugins.
 * gitconfig: Containing my perferred git configuration.
 * gitignore: Keep things out of git that shouldn't be there.
-* ssh_config: Use this as a personal ".ssh/config" file.
+* ssh_config: Use this as a personal ".ssh/config" file. See Caveat below.
 * Xdefaults: Because you never know when you'll need this file.
 * conkyrc: I created this back in the day when I was using conky.
 * zshrc: for the Z-Shell, which I'm learning to use.  
   This file came from the babun Windows package, and requires the use of "Oh-My-Zsh!"
-* movein.sh: My attempt at a universal shell set up script.  
+* movein.sh: My attempt at a universal shell set up script. Not maintained, because Ansible.
   I recommend backing up your configurations and customizing this script first!
 
-This repository is designed to work with a content manager like ansible.
-If a variable, say "is_server" is true, then make a symbolinc link
-to dotfiles/bash_profile_server.  If not, make a symbolic link to 
-dotfiles/bash_profile.
+Explanation
+-----------
+Instead of tar-balls and scp, use source control to manage your shell environment.
+How?  Make symbolic links and keep your shell files in a nice git repository.
+
+Caveat: ssh_config keeps getting the wrong mode.  It should be 0600, but gets 0644 
+when cloned.
+
+License
+-------
+MIT
+See movein.sh explanation before using.  At-your-own-risk!
+
+Author
+------
+Glenn H. Snead
+
