@@ -5,7 +5,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="babun"
+ZSH_THEME="juanghurtado"
 
 plugins=(git)
 
@@ -31,6 +31,7 @@ alias df='/bin/df -h'
 alias rm='/bin/rm -i'
 alias cp='/bin/cp -i'
 alias mv='/bin/mv -i'
+alias grep='/bin/grep --color'
 
 # Add color to grep
 alias grep='grep --color'
@@ -80,11 +81,10 @@ case "$OSTYPE" in
       source ~/.keychain/${HOSTNAME}-sh
     else
       ssh-add -l > /dev/null
-      if [ $? == 2 ]; then eval `ssh-agent -s`; fi
+      if [ $? = 2 ]; then eval `ssh-agent -s`; fi
       ssh-add -l > /dev/null
-      if [ $? == 1 ]; then ssh-add ~/.ssh/id_rsa; fi
+      if [ $? = 1 ]; then ssh-add ~/.ssh/id_rsa; fi
     fi
     ;;
 esac
 
- 
