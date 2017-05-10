@@ -231,3 +231,8 @@ buildNumber.properties
 
 # Ansible retry files
 *.retry
+
+# Ansible config file
+ansible.cfg
+
+.gitignore

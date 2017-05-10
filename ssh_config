@@ -12,18 +12,21 @@ Host *.gshome.lan
   User glenn
   IdentityFile ~/.ssh/id_rsa
 
-Host bastion
-  User ec2-user
-  Hostname ec2-34-199-162-232.compute-1.amazonaws.com
-  IdentityFile ~/.ssh/gsprime.pem
-
-Host ocp-single
-  User ec2-user
-  Hostname ec2-52-23-110-162.compute-1.amazonaws.com
-  IdentityFile ~/.ssh/gsprime.pem
-
 Host *.compute-1.amazonaws.com
   IdentityFile ~/Dropbox/AWS_Keys/gsprime.pem
+
+# DI2E Project
+
+Host bitbucket.di2e.net
+  IdentityFile ~/.ssh/redhat.pem
+
+Host *.docp-gw1a
+  User ec2-user
+  IdentityFile ~/.ssh/redhat.pem
+
+Host *.aws-openshift.di2e.net
+  User ec2-user
+  Identityfile ~/.ssh/redhat.pem
 
 Host di2e-bastion
   User glenn.snead
@@ -35,19 +38,4 @@ Host fedora-local
   User glenn
   Hostname 10.12.128.201
   IdentityFile ~/.ssh/id_rsa
-
-Host ocp-satellite
-  User ec2-user
-  Hostname 10.16.1.49
-  IdentityFile ~/.ssh/redhat.pem
-
-Host cloudforms
-  User ec2-user
-  Hostname 10.16.1.222
-  IdentityFile ~/.ssh/redhat.pem
-
-Host gluster
-  User ec2-user
-  Hostname 10.16.1.229
-  IdentityFile ~/.ssh/redhat.pem
 
