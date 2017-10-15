@@ -19,7 +19,7 @@ elseif has("macunix")
   set guifont=Monaco:h14 
 elseif has("gui_macvim")
   set guifont=Monaco:h14 
-elseif has("win95","win64")
+elseif has("win95") || has("win64")
   set gufont=Courier_New:h14:cANSI:qDRAFT
 endif
 
