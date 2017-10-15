@@ -36,7 +36,7 @@ set showmatch             "Highlight matching brackets [{()}]
 
 " --Searching--
 set incsearch      "Search as characters are entered
-"set hlsearch       "Highlight search matches
+set nohlsearch       "Do not highlight search matches
 
 
 " --Vim File Backup--
