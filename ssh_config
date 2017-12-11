@@ -41,3 +41,13 @@ Host ocp-proxy
   Hostname prxy1-docp-gw1a.aws-openshift.di2e.net
   User glenn.snead
 
+Host home-satellite
+  Hostname 192.168.4.60
+  ProxyJump glenn@glennsnead.com:2121
+  User glenn
+
+Host home-bastion
+  Hostname glennsnead.com
+  User glenn
+  IdentityFile ~/.ssh/id_rsa
+
