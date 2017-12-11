@@ -27,7 +27,7 @@ set smarttab       "Enable smarttab funciton
 "set spl=en spell   "Spell check -- english dictionary
 
 " --UI Config--
-set number                "Show line numbers.  :set nonumber to turn off
+"set number                "Show line numbers.  :set nonumber to turn off
 set showcmd               "Show last vim command in bottom right of screen
 set cursorline            "Highlight current line
 set wildmenu              "Use autocomplete in command mode (using <TAB>)
@@ -36,7 +36,7 @@ set showmatch             "Highlight matching brackets [{()}]
 
 " --Searching--
 set incsearch      "Search as characters are entered
-set hlsearch       "Highlight search matches
+set nohlsearch       "Do not highlight search matches
 
 
 " --Vim File Backup--

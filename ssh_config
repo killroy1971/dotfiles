@@ -6,11 +6,6 @@ Host github.com
   Hostname github.com
   IdentityFile ~/.ssh/id_rsa
 
-Host ovirt
-  User glenn
-  Hostname ovirt.gshome.lan
-  IdentityFile ~/.ssh/id_rsa
-
 Host *.gshome.lan
   User glenn
   IdentityFile ~/.ssh/id_rsa
