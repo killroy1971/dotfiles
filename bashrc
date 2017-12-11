@@ -57,6 +57,10 @@ darwin??)
     alias lla='ls -l -A -G -F -h'
     alias dir='ls -G -x -h'
     alias vdir='ls -G -l -h'
+    if [ -x /usr/local/bin/gmd5sum ]; then alias md5sum='/usr/local/bin/gmd5sum'; fi
+    if [ -x /usr/local/bin/gsha1sum ]; then alias sha1sum='/usr/local/bin/gsha1sum'; fi
+    if [ -x /usr/local/bin/gsha256sum ]; then alias sha256sum='/usr/local/bin/gsha256sum'; fi
+    if [ -x /usr/local/bin/gsha512um ]; then alias sha512sum='/usr/local/bin/gsha512sum'; fi
 ;;
 cygwin)
 # Set Prompt 

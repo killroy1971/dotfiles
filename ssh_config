@@ -1,3 +1,6 @@
+Host gsrouter
+  User ubnt
+
 Host github.com
   User Killroy1971
   Hostname github.com
