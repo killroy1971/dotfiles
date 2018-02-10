@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+if [ -d .oh-my-zsh ]; then export ZSH=$HOME/.oh-my-zsh; fi
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -45,46 +45,20 @@ if [[ -f /usr/local/share/zsh/site-functions/_aws ]]; then
   source /usr/local/share/zsh/site-functions/_aws
 fi
 
+case "$OSTYPE" in
+  darwin*)
+    alias sed='/usr/local/bin/gsed'
+    alias sha1sum='/usr/local/bin/gsha1sum'
+    alias sha256sum='/usr/local/bin/gsha256sum'
+    alias sha512sum='/usr/local/bin/gsha512sum'
+    alias sort='/usr/local/bin/gsort'
+    alias split='/usr/local/bin/gsplit'
+  ;;
+esac
+
 #if [[ ${CYGWIN_VERSION} == "x86" ]] && [[ -f /opt/ansible/hacking/env-setup ]]; then
 #  source /opt/ansible/hacking/env-setup
 #  export ANSIBLE_LIBRARY=$ANSIBLE_HOME/library
 #  export ANSIBLE_SSH_ARGS="-o ControlMaster=no"
 #fi
-
-# Load SSH Key 
-case "$OSTYPE" in
-  darwin*)
-    if [ -x /usr/local/bin/keychain ]; then
-      keychain -q ~/.ssh/id_rsa
-      source ~/.keychain/${HOSTNAME}-sh
-    else
-      ssh-add -l > /dev/null
-      if [ $? == 2 ]; then eval `ssh-agent -s`; fi
-      ssh-add -l > /dev/null
-      if [ $? == 1 ]; then ssh-add ~/.ssh/id_rsa; fi
-    fi
-    ;;
-  cygwin)
-    if [ -x /bin/keychain ] || [ -x /usr/bin/keychain ]; then
-      keychain -Q -q ~/.ssh/id_rsa
-      source ~/.keychain/${HOSTNAME}-sh
-    else
-      ssh-add -l > /dev/null
-      if [ $? == 2 ]; then eval `ssh-agent -s`; fi
-      ssh-add -l > /dev/null
-      if [ $? == 1 ]; then ssh-add ~/.ssh/id_rsa; fi
-    fi
-    ;;
-  *)
-    if [ -x /usr/bin/keychain ]; then
-      keychain -Q -q ~/.ssh/id_rsa
-      source ~/.keychain/${HOSTNAME}-sh
-    else
-      ssh-add -l > /dev/null
-      if [ $? = 2 ]; then eval `ssh-agent -s`; fi
-      ssh-add -l > /dev/null
-      if [ $? = 1 ]; then ssh-add ~/.ssh/id_rsa; fi
-    fi
-    ;;
-esac
 
