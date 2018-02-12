@@ -44,10 +44,11 @@ shopt -s checkwinsize
 
 # enable color support of ls and also add handy aliases specific to each os type
 case "$OSTYPE" in
-darwin??)
+darwin*)
 # Set Prompt 
-  PROMPT_COMMAND='CurDir=`pwd|sed -e "s!$HOME!~!"|sed -Ee "s!([^/])[^/]+/!\1/!g"`'
-  PS1='\[\033[01;32m\][$CurDir]\n\[\033[01;32m\]\u@\h $\[\033[0m\] '
+# PROMPT_COMMAND='CurDir=`pwd|sed -e "s!$HOME!~!"|sed -Ee "s!([^/])[^/]+/!\1/!g"`'
+# PS1='\[\033[01;32m\][$CurDir]\n\[\033[01;32m\]\u@\h $\[\033[0m\] '
+  PS1='\[\033[01;32m\]\w\n\[\033[01;32m\]\u@\h $\[\033[0m\] '
 # Set Aliases
     export CLICOLOR=1
  	  export LSCOLORS=GxFxCxDxBxegedabagaced
@@ -57,6 +58,7 @@ darwin??)
     alias lla='ls -l -A -G -F -h'
     alias dir='ls -G -x -h'
     alias vdir='ls -G -l -h'
+    if [ -x /usr/local/bin/gsed ]; then alias sed='/usr/local/bin/gsed'; fi
     if [ -x /usr/local/bin/gmd5sum ]; then alias md5sum='/usr/local/bin/gmd5sum'; fi
     if [ -x /usr/local/bin/gsha1sum ]; then alias sha1sum='/usr/local/bin/gsha1sum'; fi
     if [ -x /usr/local/bin/gsha256sum ]; then alias sha256sum='/usr/local/bin/gsha256sum'; fi
@@ -64,8 +66,9 @@ darwin??)
 ;;
 cygwin)
 # Set Prompt 
-  PROMPT_COMMAND='CurDir=`pwd|sed -e "s!$HOME!~!"|sed -re "s!([^/])[^/]+/!\1/!g"`'
-  PS1='\[\033[01;32m\][$CurDir]\n\[\033[01;32m\]\u@\h $\[\033[0m\] '
+# PROMPT_COMMAND='CurDir=`pwd|sed -e "s!$HOME!~!"|sed -re "s!([^/])[^/]+/!\1/!g"`'
+# PS1='\[\033[01;32m\][$CurDir]\n\[\033[01;32m\]\u@\h $\[\033[0m\] '
+  PS1='\[\033[01;32m\]\w\n\[\033[01;32m\]\u@\h $\[\033[0m\] '
   # PS1='[$CurDir]\n\u@\h: $: '
 # Set Aliases
     alias ls='ls --color=auto -F -h'
@@ -75,8 +78,9 @@ cygwin)
 ;;
 *)
 # Set Prompt 
-  PROMPT_COMMAND='CurDir=`pwd|sed -e "s!$HOME!~!"|sed -re "s!([^/])[^/]+/!\1/!g"`'
-  PS1='\[\033[01;32m\][$CurDir]\n\[\033[01;32m\]\u@\h $\[\033[0m\] '
+# PROMPT_COMMAND='CurDir=`pwd|sed -e "s!$HOME!~!"|sed -re "s!([^/])[^/]+/!\1/!g"`'
+# PS1='\[\033[01;32m\][$CurDir]\n\[\033[01;32m\]\u@\h $\[\033[0m\] '
+  PS1='\[\033[01;32m\]\w\n\[\033[01;32m\]\u@\h $\[\033[0m\] '
   # PS1='[$CurDir]\n\u@\h: $: '
 # Set Aliases
     eval `dircolors -b`

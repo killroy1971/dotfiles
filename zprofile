@@ -49,7 +49,6 @@ fi
 export EDITOR
 umask 022 # set default file permissions
 setopt correct # spell check command line
-setopt correctall # spell check command arguments
 setopt noclobber # protect overwriting files with cat
 setopt ignoreeof
 
