@@ -51,6 +51,7 @@ umask 022 # set default file permissions
 setopt correct # spell check command line
 setopt noclobber # protect overwriting files with cat
 setopt ignoreeof
+alias scp='noglob scp'
 
 # Do things that are specific to the installed OS and
 # Activate SSH-Agent via Keychain (if installed) to eliminate
