@@ -56,7 +56,7 @@ case "$OSTYPE" in
   ;;
 esac
 
-#if [[ ${CYGWIN_VERSION} == "x86" ]] && [[ -f /opt/ansible/hacking/env-setup ]]; then
+#if [[ ${CYGWIN_VERSION} = "x86" ]] && [[ -f /opt/ansible/hacking/env-setup ]]; then
 #  source /opt/ansible/hacking/env-setup
 #  export ANSIBLE_LIBRARY=$ANSIBLE_HOME/library
 #  export ANSIBLE_SSH_ARGS="-o ControlMaster=no"

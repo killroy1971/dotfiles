@@ -48,7 +48,7 @@ if [ -x /usr/bin/vim ]; then
 fi
 export EDITOR
 umask 022 # set default file permissions
-setopt correct # spell check command line
+#setopt correct # spell check command line
 setopt noclobber # protect overwriting files with cat
 setopt ignoreeof
 alias scp='noglob scp'
@@ -73,7 +73,7 @@ cygwin)
    keychain -q ~/.ssh/id_rsa
  else
      ssh-add -l 2> /dev/null
-     if [ $? == 2 ]; then eval `ssh-agent -s`; fi
+     if [ $? = 2 ]; then eval `ssh-agent -s`; fi
      if [ -f ${HOME}/.ssh/redhat.pem ]; then ssh-add ~/.ssh/redhat.pem; fi
   fi
 ;;
@@ -86,9 +86,9 @@ case "$OSTYPE" in
       keychain -q ~/.ssh/id_rsa
     else
       ssh-add -l > /dev/null
-      if [ $? == 2 ]; then eval `ssh-agent -s`; fi
+      if [ $? = 2 ]; then eval `ssh-agent -s`; fi
       ssh-add -l > /dev/null
-      if [ $? == 1 ]; then ssh-add ~/.ssh/id_rsa; fi
+      if [ $? = 1 ]; then ssh-add ~/.ssh/id_rsa; fi
     fi
     ;;
   cygwin)
@@ -96,9 +96,9 @@ case "$OSTYPE" in
       keychain -Q -q ~/.ssh/id_rsa
     else
       ssh-add -l > /dev/null
-      if [ $? == 2 ]; then eval `ssh-agent -s`; fi
+      if [ $? = 2 ]; then eval `ssh-agent -s`; fi
       ssh-add -l > /dev/null
-      if [ $? == 1 ]; then ssh-add ~/.ssh/id_rsa; fi
+      if [ $? = 1 ]; then ssh-add ~/.ssh/id_rsa; fi
     fi
     ;;
   *)
