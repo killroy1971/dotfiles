@@ -1,6 +1,3 @@
-Host gsrouter
-  User ubnt
-
 Host github.com
   User Killroy1971
   Hostname github.com
@@ -41,13 +38,27 @@ Host ocp-proxy
   Hostname prxy1-docp-gw1a.aws-openshift.di2e.net
   User glenn.snead
 
+# Home Proxy Server
 Host home-satellite
-  Hostname 192.168.4.60
+  Hostname 192.168.4.19
+  ProxyJump glenn@glennsnead.com:2121
+  User glenn
+
+Host home-ansible
+  Hostname 192.168.4.25
   ProxyJump glenn@glennsnead.com:2121
   User glenn
 
 Host home-bastion
   Hostname glennsnead.com
   User glenn
+  Port 2121
   IdentityFile ~/.ssh/id_rsa
+
+Host socks-bastion
+  Hostname glennsnead.com
+  Port 2121
+  User glenn
+  IdentityFile ~/.ssh/id_rsa
+  DynamicForward 8123
 
