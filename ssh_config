@@ -12,6 +12,9 @@ Host *.compute-1.amazonaws.com
 
 # DI2E Project
 
+Host aoc-af-0001.rhc-lab.iad.redhat.com
+  User gsnead
+  
 Host bitbucket.di2e.net
   IdentityFile ~/.ssh/redhat.pem
 
@@ -61,4 +64,14 @@ Host socks-bastion
   User glenn
   IdentityFile ~/.ssh/id_rsa
   DynamicForward 8123
+
+Host jumphost
+  Hostname 192.168.4.121
+  User root
+  IdentityFile ~/.ssh/id_rsa
+
+Host iad-lab
+  Hostname aoc-af-0001.rhc-lab.iad.redhat.com
+  User gsnead
+  IdentityFile ~/.ssh/id_rsa
 
