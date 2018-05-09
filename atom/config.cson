@@ -1,0 +1,14 @@
+"*":
+  core:
+    audioBeep: false
+    telemetryConsent: "limited"
+  "exception-reporting":
+    userId: "c71e93a2-9756-41e0-b72b-8837ac20b26b"
+  minimap:
+    plugins:
+      "highlight-selected": true
+      "highlight-selectedDecorationsZIndex": 0
+  "package-sync":
+    createOnChange: true
+  welcome:
+    showOnStartup: false

@@ -1,9 +1,3 @@
-# ~/.bash_profile: executed by bash for login shells.
-#!/bin/bash
-
-# the default umask is set in /etc/profile
-#umask 022
-
 # Set up initial path statment:
   export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:.
 
@@ -48,10 +42,11 @@ if [ -x /usr/bin/vim ]; then
 fi
 export EDITOR
 umask 022 # set default file permissions
-#setopt correct # spell check command line
+setopt correct # spell check command line
 setopt noclobber # protect overwriting files with cat
 setopt ignoreeof
 alias scp='noglob scp'
+alias ssh='noglob ssh'
 
 # Do things that are specific to the installed OS and
 # Activate SSH-Agent via Keychain (if installed) to eliminate
