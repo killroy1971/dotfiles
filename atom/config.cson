@@ -2,6 +2,10 @@
   core:
     audioBeep: false
     telemetryConsent: "limited"
+    themes: [
+      "hacking-the-kernel-ui"
+      "solarized-dark-syntax"
+    ]
   "exception-reporting":
     userId: "c71e93a2-9756-41e0-b72b-8837ac20b26b"
   minimap:
