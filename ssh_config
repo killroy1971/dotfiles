@@ -42,15 +42,15 @@ Host ocp-proxy
   User glenn.snead
 
 # Home Proxy Server
-Host home-satellite
-  Hostname 192.168.4.19
-  ProxyJump glenn@glennsnead.com:2121
-  User glenn
-
-Host home-ansible
-  Hostname 192.168.4.25
-  ProxyJump glenn@glennsnead.com:2121
-  User glenn
+#Host home-satellite
+#  Hostname 192.168.4.19
+#  ProxyJump glenn@glennsnead.com:2121
+#  User glenn
+#
+#Host home-ansible
+#  Hostname 192.168.4.25
+#  ProxyJump glenn@glennsnead.com:2121
+#  User glenn
 
 Host home-bastion
   Hostname glennsnead.com
