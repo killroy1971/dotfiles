@@ -4,11 +4,11 @@ Host github.com
   IdentityFile ~/.ssh/id_rsa
 
 Host *.gshome.lan
-  User glenn
+  User gsnead
   IdentityFile ~/.ssh/id_rsa
 
-Host *.compute-1.amazonaws.com
-  IdentityFile ~/Dropbox/AWS_Keys/gsprime.pem
+#Host *.compute-1.amazonaws.com
+#  IdentityFile ~/Nextcloud/AWS_Keys/gsprime.pem
 
 # DI2E Project
 
@@ -73,5 +73,8 @@ Host jumphost
 Host iad-lab
   Hostname aoc-af-0001.rhc-lab.iad.redhat.com
   User gsnead
+  IdentityFile ~/.ssh/id_rsa
+
+Host gitlab.gshome.lan
   IdentityFile ~/.ssh/id_rsa
 
