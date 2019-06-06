@@ -47,6 +47,7 @@ setopt noclobber # protect overwriting files with cat
 setopt ignoreeof
 alias scp='noglob scp'
 alias ssh='noglob ssh'
+alias rsync='noglob rsync'
 
 # Do things that are specific to the installed OS and
 # Activate SSH-Agent via Keychain (if installed) to eliminate
