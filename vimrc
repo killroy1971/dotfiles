@@ -18,7 +18,7 @@ set autoindent     "Auto indent in known file types
 autocmd FileType yaml setl indentkeys-=<:>
 
 " --General UI Options--
-colorscheme badwolf
+colorscheme desert
 set tabstop=2      "Number of visual spaces per tab
 set softtabstop=2  "Number of spaces per tab (edit mode)
 set shiftwidth=2
