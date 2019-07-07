@@ -13,7 +13,7 @@ plugins=(git)
 
 if [ -d $HOME/bin ]; then export PATH=$HOME/bin:$PATH; fi
 
-source $ZSH/oh-my-zsh.sh
+if [ -f $ZSH/oh-my-zsh.sh ]; then source $ZSH/oh-my-zsh.sh; fi
 
 export LANG=en_US.UTF-8
 
@@ -55,6 +55,9 @@ case "$OSTYPE" in
     alias split='/usr/local/bin/gsplit'
   ;;
 esac
+
+WSL=`uname -r | awk -F- '{ print $3 }'`
+if [ $WSL = "Microsoft" ]; then echo "$Hi"; fi
 
 #if [[ ${CYGWIN_VERSION} = "x86" ]] && [[ -f /opt/ansible/hacking/env-setup ]]; then
 #  source /opt/ansible/hacking/env-setup

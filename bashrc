@@ -118,7 +118,8 @@ if [ -x /usr/bin/vim ]; then alias vi='/usr/bin/vim'; fi
 if [ -x '/usr/local/bin/mvim' ]; then alias gvim='/usr/local/bin/mvim'; fi
 
 #If Windows OS, change to home directory
-if [ `uname -r | awk -F- '{print $3}'` == "Microsoft" ]; then cd ${HOME}; fi
+WSL=`uname -r | awk -F- '{print $3}'`
+if [ ${WSL} == "Microsoft" ]; then cd ${HOME}; fi
 
 # ##################
 # Welcome Screen
