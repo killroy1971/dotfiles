@@ -56,12 +56,5 @@ case "$OSTYPE" in
   ;;
 esac
 
-WSL=`uname -r | awk -F- '{ print $3 }'`
-if [ $WSL = "Microsoft" ]; then echo "$Hi"; fi
-
-#if [[ ${CYGWIN_VERSION} = "x86" ]] && [[ -f /opt/ansible/hacking/env-setup ]]; then
-#  source /opt/ansible/hacking/env-setup
-#  export ANSIBLE_LIBRARY=$ANSIBLE_HOME/library
-#  export ANSIBLE_SSH_ARGS="-o ControlMaster=no"
-#fi
+if [ -x /bin/wslpath ]; then cd $HOME; fi
 
