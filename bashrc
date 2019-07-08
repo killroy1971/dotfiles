@@ -120,6 +120,10 @@ if [ -x '/usr/local/bin/mvim' ]; then alias gvim='/usr/local/bin/mvim'; fi
 #If Windows OS, change to home directory
 if [ -x /bin/wslpath ]; then cd ${HOME}; fi
 
+if [ -f ${HOME}/.ssh/id_rsa ]; then
+  if [ -x /usr/bin/keychain ]; then eval `keychain --eval --quiet`; fi 
+fi
+
 # ##################
 # Welcome Screen
 # ##################
