@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-if [ -d .oh-my-zsh ]; then export ZSH=$HOME/.oh-my-zsh; fi
+if [ -d $HOME/.oh-my-zsh ]; then export ZSH=$HOME/.oh-my-zsh; fi
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -13,7 +13,7 @@ plugins=(git)
 
 if [ -d $HOME/bin ]; then export PATH=$HOME/bin:$PATH; fi
 
-source $ZSH/oh-my-zsh.sh
+if [ -f $ZSH/oh-my-zsh.sh ]; then source $ZSH/oh-my-zsh.sh; fi
 
 export LANG=en_US.UTF-8
 
@@ -47,18 +47,18 @@ fi
 
 case "$OSTYPE" in
   darwin*)
-    alias sed='/usr/local/bin/gsed'
-    alias sha1sum='/usr/local/bin/gsha1sum'
-    alias sha256sum='/usr/local/bin/gsha256sum'
-    alias sha512sum='/usr/local/bin/gsha512sum'
-    alias sort='/usr/local/bin/gsort'
-    alias split='/usr/local/bin/gsplit'
+    if [ -x /usr/local/bin/gsed ]; then alias sed='/usr/local/bin/gsed'; fi
+    if [ -x /usr/local/bin/gsha1sum ]; then alias sha1sum='/usr/local/bin/gsha1sum'; fi
+    if [ -x /usr/local/bin/gsha256sum ]; then alias sha256sum='/usr/local/bin/gsha256sum'; fi
+    if [ -x /usr/local/bin/gsha512sum ]; then alias sha512sum='/usr/local/bin/gsha512sum'; fi
+    if [ -x /usr/local/bin/gsort ]; then alias sort='/usr/local/bin/gsort'; fi
+    if [ -x /usr/local/bin/gsplit ]; then alias split='/usr/local/bin/gsplit'; fi
   ;;
 esac
 
-#if [[ ${CYGWIN_VERSION} = "x86" ]] && [[ -f /opt/ansible/hacking/env-setup ]]; then
-#  source /opt/ansible/hacking/env-setup
-#  export ANSIBLE_LIBRARY=$ANSIBLE_HOME/library
-#  export ANSIBLE_SSH_ARGS="-o ControlMaster=no"
-#fi
+if [ -x /bin/wslpath ]; then cd $HOME; fi
+
+if [ -f $HOME/.ssh/id_rsa ]; then
+  if [ -x /usr/bin/keychain ]; then eval `keychain --eval --quiet`; fi
+fi
 
