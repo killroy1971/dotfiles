@@ -13,9 +13,11 @@ plugins=(git)
 
 if [ -d $HOME/bin ]; then export PATH=$HOME/bin:$PATH; fi
 
-source $ZSH/oh-my-zsh.sh
+#source $ZSH/oh-my-zsh.sh
 
 export LANG=en_US.UTF-8
+
+setopt no_bare_glob_qual
 
 if [ -x /usr/bin/vim ]; then
   export EDITOR='vim'
