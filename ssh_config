@@ -82,3 +82,8 @@ Host iad-lab
 Host gitlab.gshome.lan
   IdentityFile ~/.ssh/id_rsa
 
+Host *.redhat.com
+  GSSAPIAuthentication yes
+  GSSAPIDelegateCredentials no
+  # https://mojo.redhat.com/docs/DOC-1069454 says never delegate credentials
+ 

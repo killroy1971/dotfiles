@@ -1,11 +1,17 @@
 "*":
+  "asciidoc-preview":
+    compatMode: true
   core:
     audioBeep: false
+    disabledPackages: [
+      "language-gfm"
+    ]
     telemetryConsent: "limited"
     themes: [
       "hacking-the-kernel-ui"
       "solarized-dark-syntax"
     ]
+    useTreeSitterParsers: false
   "exception-reporting":
     userId: "c71e93a2-9756-41e0-b72b-8837ac20b26b"
   minimap:
@@ -14,5 +20,9 @@
       "highlight-selectedDecorationsZIndex": 0
   "package-sync":
     createOnChange: true
+  "pp-markdown":
+    types: [
+      "*.md"
+    ]
   welcome:
     showOnStartup: false
