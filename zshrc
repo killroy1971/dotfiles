@@ -17,6 +17,8 @@ if [ -f $ZSH/oh-my-zsh.sh ]; then source $ZSH/oh-my-zsh.sh; fi
 
 export LANG=en_US.UTF-8
 
+setopt no_bare_glob_qual
+
 if [ -x /usr/bin/vim ]; then
   export EDITOR='vim'
 else
@@ -60,5 +62,6 @@ if [ -x /bin/wslpath ]; then cd $HOME; fi
 
 if [ -f $HOME/.ssh/id_rsa ]; then
   if [ -x /usr/bin/keychain ]; then eval `keychain --eval --quiet`; fi
+  if [ -x /usr/local/bin/keychain ]; then eval `keychain --eval --quiet`; fi
 fi
 
