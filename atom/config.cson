@@ -1,6 +1,9 @@
 "*":
   "asciidoc-preview":
     compatMode: true
+    exportAsPdf:
+      enabled: true
+    renderOnSaveOnly: true
   core:
     audioBeep: false
     disabledPackages: [

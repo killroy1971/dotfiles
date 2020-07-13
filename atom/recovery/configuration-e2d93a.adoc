@@ -1,0 +1,174 @@
+== Satellite Configuration
+=== File System Directories
+|====
+| Volume Path | Size | Purpose
+| /var/lib/pulp | 1 TiB | Contains all imported software repositories
+| /var/lib/mysql | 100 GiB | MySQL Database
+| /var/lib/mongo | 200 GiB | MongoDB Database
+| /var/lib/qpidd | 4 GiB | Satellite "qpidd" data
+| /var/cache/pulp | 200 GiB | Temporary cache location used during repository import and export
+|====
+
+Satellite documentation recommends separating the pulp volume from the database volumes,
+and placing the pulp volume on the fastest storage available.
+
+=== Generate custom Active Directory SSL Certificate
+
+. Create /root/sat_cert
++
+[source,shell]
+----
+mkdir /root/ssl_cert
+----
+. Go to the IC-PKI SSL certificate request website and enter the required information.
++
+. Download the Active Directory generated p12 certificate bundle from your email and copy it to the Satellite server.
++
+. Extract the private key and the certificates.  Enter the password when prompted.
++
+[source,shell]
+----
+openssl pkcs12 -in <PKCS12file> -clcerts -nokeys -out /root/sat_cert/satelltie_cert.pem
+openssl pkcs12 -in <PKCS12file> -cacerts -nokeys -out /root/sat_cert/satellite_cert_bundle.pem
+openssl pkcs12 -in <PKCS12file> -nocerts -out /root/sat_cert/satellite_cert_key.pem
+----
+. Validate certificates
++
+[source, shell]
+----
+katello-certs-check -c /root/sat_cert/satellite_cert.pem -k /root/sat_cert/satellite_cert_key.pem -r /root/sat_cert/satellite_cert_csr.pem -b /root/sat_cert/satellite_cert_bundle.pem
+----
+. Install certificates
++
+[source,shell]
+----
+satellite-installer --scenario satellite --certs-server-cert "/root/sat_cert/satellite_cert.pem" \
+--certs-server-cert-req "/root/sat_cert/satellite_cert_csr.pem" \
+--certs-server-key "/root/sat_cert/satellite_cert_key.pem" \
+--certs-server-ca-cert "/root/sat_cert/satellite_cert_bundle.pem" \
+--certs-update-server --certs-update-server-ca
+----
+
+=== Performance Tuning
+
+==== Adjust Apache limits
+. Create /etc/systemd/httpd.service/limits.conf
++
+[source, shell]
+----
+  mkdir /etc/systemd/httpd.service
+----
+
+. File contents
++
+[source, shell]
+----
+  [Service]
+  LimitNOFILE=640000
+----
+. Enable the limits change:
++
+[source, shell]
+systemctl daemon-reload
+foreman-maintain service restart
+
+==== Disable Transparent Hugepages
+. Disable Transparent Hugepages (THP)
++
+[source,shell]
+----
+  mkdir /etc/tuned/mongo-nothp
+----
+. Create the file /etc/tuned/mongo-nothp/tuned.conf
++
+[source,shell]
+----
+  [main]
+  include= throughput-performance
+
+  [vm]
+  transparent_hugepages=never
+----
+. Make the file executable
++
+[source,shell]
+----
+  chmod 0700 /etc/tunded/mongo-nohtp/tuned.conf
+----
+. Enable the profile
++
+[source,shell]
+----
+  tuned-adm profile mongo-nohtp
+----
+
+==== Adjust sysctl
+. Edit /etc/sysct.conf, and add or update these lines
++
+[source, shell]
+----
+  fs.aio-max-nr = 10000000
+  vm.swappiness  = 1
+  kernel.sem = 250   128000  32  128
+  vm.dirty_background_ratio = 5
+  vm.dirty_ratio = 10
+  vm.dirty_expire_centisecs = 500
+  vm.dirty_writeback_centisecs = 100
+  fs.suid_dumpable = 1
+----
+. Apply the sysctl changes:
++
+[source,shell]
+sysctl -p
+
+==== Adjust Satellite components
+===== Puppet Hiera Options
+. Edit /etc/foreman-installer/custom-hiera.yaml
++
+[source,shell]
+----
+apache::mod::prefork::startservers: 8
+apache::mod::prefork::minspareservers: 5
+apache::mod::prefork::maxspareservers: 20
+apache::mod::prefork::serverlimit: 256
+apache::mod::prefork::maxclients: 256
+apache::mod::prefork::maxrequestsperchild: 4000
+apache::mod::passenger::passenger_max_pool_size: 48
+apache::mod::passenger::passenger_max_request_queue_size: 400
+
+postgresql::server::config_entries:
+  max_connections: 600
+  shared_buffers: 4GB
+  work_mem: 4MB
+  checkpoint_segments: 32
+  checkpoint_completion_target: 0.9
+  effective_cache_size: 16GB
+  autovacuum_vacuum_cost_limit: 2000
+  log_min_duration_statement: 500
+
+qpid::open_file_limit: 65536
+qpid::router::open_file_limit: 150100
+----
+
+. Enable the module changes
++
+[source,shell]
+----
+  satellite-installer
+----
+
+=== Tune Dynflow task manager
+. Edit /etc/sysconfig/dynflowd
++
+[source, shell]
+EXECUTORS_COUNT=2
+EXECUTOR_MEMORY_LIMIT=3gb
+EXECUTOR_MEMORY_MONITOR_DELAY=1800
+EXECUTOR_MEMORY_MONITOR_INTERVAL=120
+
+. Restart Satellite
++
+[source, shell]
+----
+foreman-maintain service restart
+----

@@ -2,6 +2,10 @@ Host *.gshome.lan
   User gsnead
   IdentityFile ~/.ssh/id_rsa
 
+Host *.rhc-lab.iad.redhat.com
+  User gsnead
+  IdentityFile ~/.ssh/id_rsa
+
 Host github.com
   User Killroy1971
   Hostname github.com
