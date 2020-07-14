@@ -67,7 +67,7 @@ fi
 
 # Perform tasks during a login shell
 if [ "$PS1" ]; then
-  parent=$(ps -o ppid= -p $$)
+  parent=$(ps -o ppid= -p $$ | awk '{$1=$1};1')
   name=$(ps -o comm= -p $parent)
   if [ -x /usr/bin/tmux ]; then
     case "$name" in sshd|login) exec tmux ;; esac
