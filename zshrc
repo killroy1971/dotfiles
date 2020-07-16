@@ -66,10 +66,19 @@ if [ -f $HOME/.ssh/id_rsa ]; then
 fi
 
 # Perform tasks during a login shell
-if [ "$PS1" ]; then
-  parent=$(ps -o ppid= -p $$ | awk '{$1=$1};1')
-  name=$(ps -o comm= -p $parent)
-  if [ -x /usr/bin/tmux ]; then
-    case "$name" in sshd|login ) exec tmux ;; esac
-  fi
-fi
+#if [ "$PS1" ]; then
+#  parent=$(ps -o ppid= -p $$ | awk '{$1=$1};1')
+#  name=$(ps -o comm= -p $parent)
+#  if [ -x /usr/bin/tmux ]; then
+#    case "$name" in sshd|login ) exec tmux ;; esac
+#  fi
+#fi
+
+##################
+# Welcome Screen
+# ##################
+echo -ne "This system's name is: "; hostname
+echo -e "";
+echo -ne "Today is "; date
+echo -e "";
+
