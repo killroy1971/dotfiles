@@ -69,8 +69,12 @@ fi
 if [ "$PS1" ]; then
   parent=$(ps -o ppid= -p $$ | awk '{$1=$1};1')
   name=$(ps -o comm= -p $parent)
+  echo $name
   if [ -x /usr/bin/tmux ]; then
     case "$name" in gnome-terminal-|login ) exec tmux ;; esac
+  fi
+  if [ -x /usr/local/bin/tmux ]; then
+    case "$name" in login ) exec tmux ;; esac
   fi
 fi
 
