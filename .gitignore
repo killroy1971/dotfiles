@@ -5,5 +5,5 @@ atom/packages
 atom/compile-cache
 atom/blob-store
 atom/stroage
-
+atom/.atom-socket*
 
