@@ -1,6 +1,11 @@
 Fontconfig warning: "/usr/share/fontconfig/conf.avail/05-reset-dirs-sample.conf", line 6: unknown element "reset-dirs"
 ../../sandbox/linux/seccomp-bpf-helpers/sigsys_handlers.cc:**CRASHING**:seccomp-bpf failure in syscall 0230
-../../sandbox/linux/seccomp-bpf-helpers/sigsys_handlers.cc:**CRASHING**:seccomp-bpf failure in syscall 0230
 bash: cannot set terminal process group (-1): Inappropriate ioctl for device
 bash: no job control in this shell
 ../../sandbox/linux/seccomp-bpf-helpers/sigsys_handlers.cc:**CRASHING**:seccomp-bpf failure in syscall 0230
+../../sandbox/linux/seccomp-bpf-helpers/sigsys_handlers.cc:**CRASHING**:seccomp-bpf failure in syscall 0230
+
+(atom:20198): Gtk-WARNING **: 21:49:51.229: Failed to measure available space: The specified location is not supported
+Attempting to call a function in a renderer window that has been closed or released.
+Function provided here: worker.js:79:22
+Remote event names: destroyed, crashed

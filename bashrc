@@ -125,7 +125,7 @@ if [ -f ${HOME}/.ssh/id_rsa ]; then
   if [ -x /usr/local/bin/keychain ]; then eval `keychain --eval --quiet`; fi
 fi
 
-# Perform tasks during a login shell or gnome-terminal session
+ Perform tasks during a login shell or gnome-terminal session
 if [ "$PS1" ]; then
   parent=$(ps -o ppid= -p $$)
   name=$(ps -o comm= -p $parent)

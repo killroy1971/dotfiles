@@ -6,3 +6,5 @@ atom/compile-cache
 atom/blob-store
 atom/stroage
 atom/.atom*
+atom/recovery*
+atom/.atom-socket-*

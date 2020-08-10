@@ -17,6 +17,8 @@
     useTreeSitterParsers: false
   "exception-reporting":
     userId: "c71e93a2-9756-41e0-b72b-8837ac20b26b"
+  gitlab:
+    serverUrl: "https://gitlab.consulting.redhat.com/"
   "linter-ui-default":
     panelHeight: 300
     showPanel: true
