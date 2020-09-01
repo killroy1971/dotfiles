@@ -38,6 +38,8 @@ set showmatch             "Highlight matching brackets [{()}]
 set incsearch      "Search as characters are entered
 set nohlsearch       "Do not highlight search matches
 
+" Fix issue when launching vim in Windows Terminal -- starts in Replace mode
+set t_u7=
 
 " --Vim File Backup--
 if has("win32") || has("win64") 

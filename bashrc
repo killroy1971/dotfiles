@@ -1,4 +1,3 @@
-#!/bin/bash
 # Glenn's cross-platform .bashrc file
 # This .bashrc file will work in a linux, OSX, or a cygwin bash shell.
 
@@ -118,7 +117,7 @@ if [ -x /usr/bin/vim ]; then alias vi='/usr/bin/vim'; fi
 if [ -x '/usr/local/bin/mvim' ]; then alias gvim='/usr/local/bin/mvim'; fi
 
 #If Windows OS, change to home directory
-if [ -x /bin/wslpath ]; then cd ${HOME}; fi
+if [ ! -z $WSL_DISTRO_NAME ]; then cd $HOME; fi
 
 if [ -f ${HOME}/.ssh/id_rsa ]; then
   if [ -x /usr/bin/keychain ]; then eval `keychain --eval --quiet`; fi 
