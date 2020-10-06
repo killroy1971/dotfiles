@@ -1,5 +1,8 @@
 # Set up initial path statment:
-  export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:.
+  export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
+
+# Add snap binary path to PATH if it exists
+  if [ -d "/var/lib/snapd/snap/bin" ]; then PATH=${PATH}:/var/lib/snapd/snap/bin; fi
 
 # Add the /opt/bin path if this system is using opkg (i.e. QNAP NAS)
   if [ -e "/opt/bin/opkg" ]; then PATH=/opt/bin:${PATH}; fi
@@ -15,6 +18,9 @@
 
 # Add oc-cluster-wrapper to PATH if it exists
   if [ -d "${HOME}/oc-cluster-wrapper" ]; then PATH=${PATH}:${HOME}/oc-cluster-wrapper; fi
+
+# Add local directory to PATH - keep at end of path add-ons
+  PATH=${PATH}:.
 
 # Add items to path if on a Windows machine (CYGWIN)
   if [ -d "/drives/c/Program Files/Oracle/VirtualBox"/ ]; then
