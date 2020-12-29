@@ -65,17 +65,22 @@ if [ -f $HOME/.ssh/id_rsa ]; then
   if [ -x /usr/local/bin/keychain ]; then eval `keychain --eval --quiet`; fi
 fi
 
-# Perform tasks during a login shell or gnome-terminal session
-if [ "$PS1" ]; then
-  parent=$(ps -o ppid= -p $$ | awk '{$1=$1};1')
-  name=$(ps -o comm= -p $parent)
-  echo $name
-  if [ -x /usr/bin/tmux ]; then
-    case "$name" in gnome-terminal-|login ) exec tmux ;; esac
-  fi
-  if [ -x /usr/local/bin/tmux ]; then
-    case "$name" in login ) exec tmux ;; esac
-  fi
+if [ $USER == "glenn" ]; then 
+	alias coreos-installer='podman run --pull=always            \
+													--rm --tty --interactive            \
+													--security-opt label=disable        \
+													--volume ${PWD}:/pwd --workdir /pwd \
+													quay.io/coreos/coreos-installer:release'
+
+	alias ignition-validate='podman run --rm --tty --interactive \
+													 --security-opt label=disable        \
+													 --volume ${PWD}:/pwd --workdir /pwd \
+													 quay.io/coreos/ignition-validate:release'
+
+	alias fcct='podman run --rm --tty --interactive \
+							--security-opt label=disable        \
+							--volume ${PWD}:/pwd --workdir /pwd \
+							quay.io/coreos/fcct:release'
 fi
 
 ##################
