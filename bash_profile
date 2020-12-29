@@ -5,7 +5,7 @@
 #umask 022
 
 # Set up initial path statment:
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:.
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
 
 # source the system wide bashrc if it exists
 if [ -f /etc/bash.bashrc ]; then 
@@ -14,11 +14,11 @@ elif [ -f /etc/bashrc ]; then
   source /etc/bashrc
 fi
   
+# Add the snap binary path if it exists
+ test -d "/var/lib/snapd/snap/bin" && PATH=${PATH}:/var/lib/snapd/snap/bin
+
 # Add the /opt/bin path if this system is using opkg (i.e. QNAP NAS)
  test -e "/opt/bin/opkg" && PATH=/opt/bin:${PATH}
-
-# source the users bashrc if it exists
- if [ -f "${HOME}/.bashrc" ]; then source "${HOME}/.bashrc"; fi
 
 # Set PATH so it includes user's private bin if it exists
  test -d "${HOME}/bin" && PATH=${HOME}/bin:${PATH}
@@ -31,6 +31,9 @@ fi
 
 # Add oc-cluster-wrapper to PATH if it exists
  test -d "${HOME}/oc-cluster-wrapper" && PATH=${PATH}:${HOME}/oc-cluster-wrapper:
+
+# Add local directory to PATH - leave this after other PATH add-ons
+PATH=${PATH}:.
 
 # Fedora machines
   if [ -f /etc/fedora-release ]; then export VAGRANT_DEFAULT_PROVIDER=virtualbox; fi
@@ -56,6 +59,9 @@ set -o noclobber # protect overwriting files with cat
 set -o ignoreeof
 EDITOR='/usr/bin/vim'
 export LANG EDITOR
+
+# source the users bashrc if it exists
+ if [ -f "${HOME}/.bashrc" ]; then source "${HOME}/.bashrc"; fi
 
 # Do things that are specific to the installed OS and
 # Activate SSH-Agent via Keychain (if installed) to eliminate
