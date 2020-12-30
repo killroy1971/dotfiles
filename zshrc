@@ -81,6 +81,11 @@ if [ $USER == "glenn" ]; then
 							--security-opt label=disable        \
 							--volume ${PWD}:/pwd --workdir /pwd \
 							quay.io/coreos/fcct:release'
+  alias terraform='podman run --rm --tty --interactive \
+    --security-opt label=disable \
+    --volume ${PWD}:/pwd --workdir \
+    /pwd hashicorp/terraform'
+
 fi
 
 ##################
