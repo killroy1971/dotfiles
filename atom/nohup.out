@@ -1,6 +1,8 @@
 Fontconfig warning: "/usr/share/fontconfig/conf.avail/05-reset-dirs-sample.conf", line 6: unknown element "reset-dirs"
 bash: cannot set terminal process group (-1): Inappropriate ioctl for device
 bash: no job control in this shell
+
+(atom:36703): Gtk-WARNING **: 10:37:45.454: Failed to measure available space: The specified location is not supported
 Attempting to call a function in a renderer window that has been closed or released.
 Function provided here: worker.js:79:22
 Remote event names: crashed, destroyed
