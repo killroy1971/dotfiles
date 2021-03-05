@@ -25,7 +25,7 @@ else
   export EDITOR='vi'
 fi
 
-alias gvim='mintty vim &'
+#alias gvim='mintty vim &'
 alias ls='/bin/ls -F'
 alias ll='/bin/ls -Flh'
 alias la='/bin/ls -Fa'
@@ -33,11 +33,6 @@ alias df='/bin/df -h'
 alias rm='/bin/rm -i'
 alias cp='/bin/cp -i'
 alias mv='/bin/mv -i'
-alias grep='/bin/grep --color'
-
-# Add color to grep
-alias grep='grep --color'
-alias igrep='grep --color -i'
 
 if [ -x /usr/bin/vim ]; then alias vi='/usr/bin/vim'; fi
 if [ -x /usr/local/bin/mvim ]; then alias gvim='/usr/local/bin/mvim'; fi
@@ -65,29 +60,12 @@ if [ -f $HOME/.ssh/id_rsa ]; then
   if [ -x /usr/local/bin/keychain ]; then eval `keychain --eval --quiet`; fi
 fi
 
-if [ $USER == "glenn" ]; then 
-	alias coreos-installer='podman run --pull=always            \
-													--rm --tty --interactive            \
-													--security-opt label=disable        \
-													--volume ${PWD}:/pwd --workdir /pwd \
-													quay.io/coreos/coreos-installer:release'
-
-	alias ignition-validate='podman run --rm --tty --interactive \
-													 --security-opt label=disable        \
-													 --volume ${PWD}:/pwd --workdir /pwd \
-													 quay.io/coreos/ignition-validate:release'
-
-	alias fcct='podman run --rm --tty --interactive \
-							--security-opt label=disable        \
-							--volume ${PWD}:/pwd --workdir /pwd \
-							quay.io/coreos/fcct:release'
-  alias terraform='podman run --rm --tty --interactive \
-    --security-opt label=disable \
-    --volume ${PWD}:/pwd --workdir \
-    /pwd hashicorp/terraform'
-
+if [ $USER = "glenn" ]; then 
+	alias coreos-installer='podman run --pull=always --rm --tty --interactive --security-opt label=disable --volume ${PWD}:/pwd --workdir /pwd quay.io/coreos/coreos-installer:release'
+	alias ignition-validate='podman run --rm --tty --interactive --security-opt label=disable --volume ${PWD}:/pwd --workdir /pwd quay.io/coreos/ignition-validate:release'
+	alias fcct='podman run --rm --tty --interactive --security-opt label=disable --volume ${PWD}:/pwd --workdir /pwd quay.io/coreos/fcct:release'
 fi
-
+ 
 ##################
 # Welcome Screen
 # ##################
