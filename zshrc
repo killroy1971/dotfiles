@@ -65,28 +65,29 @@ if [ -f $HOME/.ssh/id_rsa ]; then
   if [ -x /usr/local/bin/keychain ]; then eval `keychain --eval --quiet`; fi
 fi
 
-if [ $USER == "glenn" ]; then 
-	alias coreos-installer='podman run --pull=always            \
-													--rm --tty --interactive            \
-													--security-opt label=disable        \
-													--volume ${PWD}:/pwd --workdir /pwd \
-													quay.io/coreos/coreos-installer:release'
-
-	alias ignition-validate='podman run --rm --tty --interactive \
-													 --security-opt label=disable        \
-													 --volume ${PWD}:/pwd --workdir /pwd \
-													 quay.io/coreos/ignition-validate:release'
-
-	alias fcct='podman run --rm --tty --interactive \
-							--security-opt label=disable        \
-							--volume ${PWD}:/pwd --workdir /pwd \
-							quay.io/coreos/fcct:release'
-  alias terraform='podman run --rm --tty --interactive \
-    --security-opt label=disable \
-    --volume ${PWD}:/pwd --workdir \
-    /pwd hashicorp/terraform'
-
-fi
+#if [ -x /usr/bin/podman ]; then 
+#  if [ $USER == "glenn" ]; then 
+#    alias coreos-installer='podman run --pull=always            \
+#                            --rm --tty --interactive            \
+#                            --security-opt label=disable        \
+#                            --volume ${PWD}:/pwd --workdir /pwd \
+#                            quay.io/coreos/coreos-installer:release'
+#
+#    alias ignition-validate='podman run --rm --tty --interactive \
+#                             --security-opt label=disable        \
+#                             --volume ${PWD}:/pwd --workdir /pwd \
+#                             quay.io/coreos/ignition-validate:release'
+#
+#    alias fcct='podman run --rm --tty --interactive \
+#                --security-opt label=disable        \
+#                --volume ${PWD}:/pwd --workdir /pwd \
+#                quay.io/coreos/fcct:release'
+#    alias terraform='podman run --rm --tty --interactive \
+#      --security-opt label=disable \
+#      --volume ${PWD}:/pwd --workdir \
+#      /pwd hashicorp/terraform'
+#  fi
+#fi
 
 ##################
 # Welcome Screen
