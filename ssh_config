@@ -1,3 +1,8 @@
+Host patches-satellite
+  User ec2-user
+  IdentityFile ~/.ssh/patches_keypair.pem
+  Hostname ec2-3-238-182-237.compute-1.amazonaws.com
+
 Host *.gshome.lan
   User gsnead
   IdentityFile ~/.ssh/id_rsa
@@ -43,26 +48,6 @@ Host di2e-bastion
   Hostname bastion-docp.di2e.net
   IdentityFile ~/.ssh/redhat.pem
   ForwardAgent = yes
-
-Host fedora-local
-  User glenn
-  Hostname 10.12.128.201
-  IdentityFile ~/.ssh/id_rsa
-
-Host ocp-proxy
-  Hostname prxy1-docp-gw1a.aws-openshift.di2e.net
-  User glenn.snead
-
-# Home Proxy Server
-#Host home-satellite
-#  Hostname 192.168.4.19
-#  ProxyJump glenn@glennsnead.com:2121
-#  User glenn
-#
-#Host home-ansible
-#  Hostname 192.168.4.25
-#  ProxyJump glenn@glennsnead.com:2121
-#  User glenn
 
 Host home-bastion
   Hostname glennsnead.com
