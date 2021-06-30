@@ -1,11 +1,8 @@
-Glenn's dotfiles
-================
+= Glenn's dotfiles
 
 My shell configuration files
 
-This covers: bash, git, and vim
---------------------------------
-
+== This covers: bash, git, and vim
 * bashrc
 * bash_profile - Loads your SSH key
 * bash_profile_server - Does not load your SSH key 
@@ -25,20 +22,17 @@ This covers: bash, git, and vim
 * movein.sh: My attempt at a universal shell set up script. Not maintained, because Ansible.
   I recommend backing up your configurations and customizing this script first!
 
-Explanation
------------
+== Explanation
 Instead of tar-balls and scp, use source control to manage your shell environment.
 How?  Make symbolic links and keep your shell files in a nice git repository.
 
 Caveat: ssh_config keeps getting the wrong mode.  It should be 0600, but gets 0644 
 when cloned.
 
-License
--------
+== License
 MIT
 See movein.sh explanation before using.  At-your-own-risk!
 
-Author
-------
+== Author
 Glenn H. Snead
 

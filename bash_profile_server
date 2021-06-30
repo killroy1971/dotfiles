@@ -2,7 +2,7 @@
 #!/bin/bash
 
 # the default umask is set in /etc/profile
-#umask 022
+umask 022
 
 # Set up initial path statment:
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:.

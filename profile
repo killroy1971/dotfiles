@@ -2,7 +2,7 @@
 #!/bin/bash
 
 # the default umask is set in /etc/profile
-#umask 022
+umask 022
 
 # source the system wide bashrc if it exists
 if [ -e /etc/bash.bashrc ]; then 
