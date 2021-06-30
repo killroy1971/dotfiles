@@ -2,7 +2,7 @@
 
 == My shell configuration files
 
-INFO: This covers: bash, git, and vim
+NOTE: This covers: bash, git, and vim
 
 * bashrc
 * bash_profile - Loads your SSH key
