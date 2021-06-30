@@ -1,8 +1,9 @@
 = Glenn's dotfiles
 
-My shell configuration files
+== My shell configuration files
 
-== This covers: bash, git, and vim
+INFO: This covers: bash, git, and vim
+
 * bashrc
 * bash_profile - Loads your SSH key
 * bash_profile_server - Does not load your SSH key 
